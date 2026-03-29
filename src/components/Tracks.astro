@@ -1,0 +1,65 @@
+---
+import { TRACKS } from '../lib/constants';
+import TryNowButton from './TryNowButton.astro';
+---
+
+<section id="tracks" class="relative py-28 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16 reveal">
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-text mb-4">
+        Works with what you already have
+      </h2>
+      <p class="text-text-secondary text-lg max-w-xl mx-auto">
+        Three paths to simulation-ready assets. Start with what you've got.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      {TRACKS.map((track, i) => (
+        <div
+          class:list={[
+            'reveal group relative p-6 rounded-xl border transition-all duration-300',
+            i === 0 ? `reveal-delay-1` : i === 1 ? `reveal-delay-2` : `reveal-delay-3`,
+            track.active
+              ? 'border-amber/30 bg-bg-card hover:border-amber/50 shadow-[0_0_30px_-12px_rgba(245,158,11,0.15)]'
+              : 'border-[rgba(255,255,255,0.06)] bg-bg-card/60 hover:border-[rgba(255,255,255,0.12)] opacity-75 hover:opacity-90',
+          ]}
+        >
+          {track.badge && (
+            <div class="absolute top-4 right-4">
+              <span class="text-[11px] font-medium text-text-secondary bg-[rgba(255,255,255,0.06)] px-2.5 py-1 rounded-full">
+                {track.badge}
+              </span>
+            </div>
+          )}
+
+          {track.active && (
+            <div class="absolute top-4 right-4">
+              <span class="text-[11px] font-medium text-amber bg-amber/[0.08] border border-amber/20 px-2.5 py-1 rounded-full">
+                Available now
+              </span>
+            </div>
+          )}
+
+          <div class="mb-4">
+            <h3 class:list={[
+              'text-lg font-semibold mb-3',
+              track.active ? 'text-text' : 'text-text-secondary',
+            ]}>
+              {track.title}
+            </h3>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              {track.description}
+            </p>
+          </div>
+
+          {track.active && (
+            <div class="mt-6 pt-4 border-t border-[rgba(255,255,255,0.06)]">
+              <TryNowButton size="default" />
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

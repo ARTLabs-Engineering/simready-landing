@@ -1,0 +1,40 @@
+---
+import { STATS } from '../lib/constants';
+---
+
+<section id="problem" class="relative py-28 px-6">
+  <!-- Subtle divider glow -->
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[400px] h-px bg-gradient-to-r from-transparent via-amber/20 to-transparent"></div>
+
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16 reveal">
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-text mb-4">
+        The asset bottleneck is slowing<br class="hidden sm:block" /> your robot training
+      </h2>
+    </div>
+
+    <!-- Stats grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto mb-12">
+      {STATS.map((stat, i) => (
+        <div class:list={[
+          'reveal p-6 rounded-xl border border-[rgba(255,255,255,0.06)] bg-bg-card',
+          i === 0 ? 'reveal-delay-1' : i === 1 ? 'reveal-delay-2' : i === 2 ? 'reveal-delay-3' : 'reveal-delay-4',
+        ]}>
+          <div class="text-3xl sm:text-4xl font-bold text-amber mb-2 font-mono tracking-tight">
+            {stat.value}
+          </div>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            {stat.label}
+          </p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Punchline -->
+    <div class="text-center reveal">
+      <p class="text-lg text-text font-medium">
+        We turn that weeks-long process into <span class="text-amber">minutes</span>.
+      </p>
+    </div>
+  </div>
+</section>

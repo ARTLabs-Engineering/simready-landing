@@ -1,0 +1,24 @@
+---
+interface Props {
+  code: string;
+  filename?: string;
+}
+
+const { code, filename = 'ceramic_mug.usda' } = Astro.props;
+---
+
+<div class="code-block rounded-xl overflow-hidden border border-[rgba(255,255,255,0.06)] bg-[#111113]">
+  <!-- Title bar -->
+  <div class="flex items-center gap-2 px-4 py-2.5 bg-[#0D0D0F] border-b border-[rgba(255,255,255,0.06)]">
+    <div class="flex gap-1.5">
+      <span class="w-2.5 h-2.5 rounded-full bg-[#3F3F46]"></span>
+      <span class="w-2.5 h-2.5 rounded-full bg-[#3F3F46]"></span>
+      <span class="w-2.5 h-2.5 rounded-full bg-[#3F3F46]"></span>
+    </div>
+    <span class="text-xs text-text-secondary font-mono ml-2">{filename}</span>
+  </div>
+  <!-- Code content -->
+  <div class="overflow-x-auto">
+    <pre class="px-5 py-4 text-sm leading-relaxed font-mono"><code set:html={code} /></pre>
+  </div>
+</div>

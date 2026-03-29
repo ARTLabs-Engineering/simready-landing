@@ -1,0 +1,388 @@
+---
+import TryNowButton from './TryNowButton.astro';
+---
+
+<section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 pb-24">
+  <!-- Ambient glow -->
+  <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-amber/[0.04] rounded-full blur-[120px] pointer-events-none"></div>
+
+  <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 w-full">
+    <!-- Nav -->
+    <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-bg/80 border-b border-[rgba(255,255,255,0.06)]">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+        <a href="/" class="flex items-center gap-2.5 text-text font-semibold text-sm tracking-tight">
+          <!-- ArtLabs logo mark -->
+          <svg class="w-6 h-6" viewBox="0 0 32 32" fill="none">
+            <rect width="32" height="32" rx="8" fill="#F59E0B"/>
+            <path d="M8 24L16 8L24 24H20L16 15L12 24H8Z" fill="#0A0A0B" stroke="#0A0A0B" stroke-width="0.5"/>
+          </svg>
+          <span>SimReady <span class="text-text-secondary font-normal">by ArtLabs</span></span>
+        </a>
+        <div class="flex items-center gap-6">
+          <a href="#how-it-works" class="text-sm text-text-secondary hover:text-text transition-colors hidden sm:block">How it works</a>
+          <a href="#compatibility" class="text-sm text-text-secondary hover:text-text transition-colors hidden sm:block">Compatibility</a>
+          <a href="#tech" class="text-sm text-text-secondary hover:text-text transition-colors hidden sm:block">Technical</a>
+          <TryNowButton size="default" />
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero content -->
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mt-12 lg:mt-0">
+      <!-- Left: Copy -->
+      <div class="space-y-6">
+        <div class="inline-flex items-center gap-2 text-xs font-medium text-amber bg-amber/[0.08] border border-amber/20 rounded-full px-3 py-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-amber animate-pulse"></span>
+          Now in private beta
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold leading-[1.08] tracking-tight text-text">
+          Make any 3D object<br />
+          <span class="text-amber">simulation-ready</span><br />
+          in minutes
+        </h1>
+
+        <p class="text-base sm:text-lg text-text-secondary leading-relaxed max-w-lg">
+          Photos or 3D models in, physics-enabled OpenUSD out. Ready for Isaac Sim, MuJoCo, Gazebo, and Unity.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-start gap-4 pt-2">
+          <TryNowButton size="large" />
+          <a href="#how-it-works" class="inline-flex items-center gap-2 px-6 py-3.5 text-sm font-medium text-text-secondary hover:text-text border border-border-hover rounded-lg transition-colors">
+            See how it works
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </a>
+        </div>
+
+        <!-- Trust signals -->
+        <div class="flex items-center gap-6 pt-4 text-xs text-text-secondary">
+          <span class="flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5 text-green" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            OpenUSD native
+          </span>
+          <span class="flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5 text-green" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            Physics-validated
+          </span>
+          <span class="flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5 text-green" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            NVIDIA Inception
+          </span>
+        </div>
+      </div>
+
+      <!-- Right: 3D Scene -->
+      <div class="relative">
+        <div id="scene-container" class="relative w-full aspect-square max-w-[520px] mx-auto rounded-2xl overflow-hidden border border-[rgba(255,255,255,0.06)] bg-[#111113]">
+          <!-- Three.js canvas mounts here -->
+          <canvas id="hero-canvas" class="w-full h-full"></canvas>
+
+          <!-- State indicator pills -->
+          <div id="state-pills" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 z-10">
+            <button data-state="0" class="state-pill active px-3 py-1 text-xs font-mono rounded-full border transition-all" aria-label="View wireframe mesh">
+              Wireframe
+            </button>
+            <button data-state="1" class="state-pill px-3 py-1 text-xs font-mono rounded-full border transition-all" aria-label="View textured model">
+              Textured
+            </button>
+            <button data-state="2" class="state-pill px-3 py-1 text-xs font-mono rounded-full border transition-all" aria-label="View SimReady asset">
+              SimReady
+            </button>
+          </div>
+
+          <!-- Physics labels (shown in SimReady state) -->
+          <div id="physics-labels" class="absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-500 z-10">
+            <div class="absolute top-[18%] right-[12%] font-mono text-xs text-amber bg-bg/80 backdrop-blur-sm px-2.5 py-1 rounded border border-amber/20">
+              mass: 340g
+            </div>
+            <div class="absolute top-[45%] left-[8%] font-mono text-xs text-amber bg-bg/80 backdrop-blur-sm px-2.5 py-1 rounded border border-amber/20">
+              friction: 0.42
+            </div>
+            <div class="absolute bottom-[25%] right-[15%] font-mono text-xs text-amber bg-bg/80 backdrop-blur-sm px-2.5 py-1 rounded border border-amber/20">
+              material: ceramic
+            </div>
+            <div class="absolute bottom-[38%] left-[12%] font-mono text-xs text-amber bg-bg/80 backdrop-blur-sm px-2.5 py-1 rounded border border-amber/20">
+              restitution: 0.15
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import * as THREE from 'three';
+
+  const canvas = document.getElementById('hero-canvas') as HTMLCanvasElement;
+  const container = document.getElementById('scene-container') as HTMLElement;
+  const physicsLabels = document.getElementById('physics-labels') as HTMLElement;
+  const statePills = document.querySelectorAll('.state-pill');
+
+  if (canvas && container) {
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 100);
+    camera.position.set(0, 1.2, 4);
+    camera.lookAt(0, 0.4, 0);
+
+    const renderer = new THREE.WebGLRenderer({
+      canvas,
+      antialias: true,
+      alpha: true,
+    });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.2;
+
+    function resize() {
+      const rect = container.getBoundingClientRect();
+      renderer.setSize(rect.width, rect.height);
+      camera.aspect = rect.width / rect.height;
+      camera.updateProjectionMatrix();
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    // Lighting
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+    scene.add(ambientLight);
+
+    const keyLight = new THREE.DirectionalLight(0xffffff, 1.2);
+    keyLight.position.set(3, 5, 4);
+    scene.add(keyLight);
+
+    const fillLight = new THREE.DirectionalLight(0x3B82F6, 0.3);
+    fillLight.position.set(-3, 2, -2);
+    scene.add(fillLight);
+
+    const rimLight = new THREE.DirectionalLight(0xF59E0B, 0.4);
+    rimLight.position.set(0, 3, -4);
+    scene.add(rimLight);
+
+    // Create a mug geometry
+    const mugGroup = new THREE.Group();
+    scene.add(mugGroup);
+
+    // Mug body (cylinder)
+    const bodyGeom = new THREE.CylinderGeometry(0.45, 0.4, 1.0, 32, 1, true);
+    const bottomGeom = new THREE.CircleGeometry(0.4, 32);
+    bottomGeom.rotateX(-Math.PI / 2);
+    bottomGeom.translate(0, -0.5, 0);
+
+    // Handle (torus)
+    const handleGeom = new THREE.TorusGeometry(0.25, 0.04, 12, 24, Math.PI);
+    handleGeom.rotateZ(Math.PI / 2);
+    handleGeom.translate(0.5, 0.0, 0);
+
+    // Rim
+    const rimGeom = new THREE.TorusGeometry(0.45, 0.02, 8, 32);
+    rimGeom.rotateX(Math.PI / 2);
+    rimGeom.translate(0, 0.5, 0);
+
+    // Materials
+    const wireframeMat = new THREE.MeshBasicMaterial({
+      color: 0xfafafa,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.7,
+    });
+
+    const ceramicMat = new THREE.MeshStandardMaterial({
+      color: 0xE8E0D4,
+      roughness: 0.35,
+      metalness: 0.0,
+    });
+
+    const handleMat = new THREE.MeshStandardMaterial({
+      color: 0xE8E0D4,
+      roughness: 0.35,
+      metalness: 0.0,
+    });
+
+    const physicsWireMat = new THREE.MeshBasicMaterial({
+      color: 0xF59E0B,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.35,
+    });
+
+    // Create meshes for each state
+    // State 0: Wireframe
+    const wireBody = new THREE.Mesh(bodyGeom, wireframeMat);
+    const wireBottom = new THREE.Mesh(bottomGeom, wireframeMat);
+    const wireHandle = new THREE.Mesh(handleGeom, wireframeMat);
+    const wireRim = new THREE.Mesh(rimGeom, wireframeMat);
+    const wireGroup = new THREE.Group();
+    wireGroup.add(wireBody, wireBottom, wireHandle, wireRim);
+    mugGroup.add(wireGroup);
+
+    // State 1: Textured
+    const texBody = new THREE.Mesh(bodyGeom, ceramicMat);
+    const texBottom = new THREE.Mesh(bottomGeom, ceramicMat);
+    const texHandle = new THREE.Mesh(handleGeom, handleMat);
+    const texRim = new THREE.Mesh(rimGeom, ceramicMat);
+    const texGroup = new THREE.Group();
+    texGroup.add(texBody, texBottom, texHandle, texRim);
+    texGroup.visible = false;
+    mugGroup.add(texGroup);
+
+    // State 2: SimReady (textured + physics overlay)
+    const simBody = new THREE.Mesh(bodyGeom, ceramicMat.clone());
+    const simBottom = new THREE.Mesh(bottomGeom, ceramicMat.clone());
+    const simHandle = new THREE.Mesh(handleGeom, handleMat.clone());
+    const simRim = new THREE.Mesh(rimGeom, ceramicMat.clone());
+
+    // Collision mesh overlay (slightly scaled up)
+    const collisionGeom = new THREE.CylinderGeometry(0.5, 0.45, 1.1, 8, 1);
+    const collisionMesh = new THREE.Mesh(collisionGeom, physicsWireMat);
+
+    const simGroup = new THREE.Group();
+    simGroup.add(simBody, simBottom, simHandle, simRim, collisionMesh);
+    simGroup.visible = false;
+    mugGroup.add(simGroup);
+
+    // Center of mass indicator for SimReady state
+    const comGeom = new THREE.SphereGeometry(0.04, 16, 16);
+    const comMat = new THREE.MeshBasicMaterial({ color: 0xF59E0B });
+    const comMesh = new THREE.Mesh(comGeom, comMat);
+    comMesh.position.set(0, 0.052, 0);
+    simGroup.add(comMesh);
+
+    // Axes helper for SimReady
+    const axesGroup = new THREE.Group();
+    const axisLength = 0.3;
+
+    function makeAxis(dir: THREE.Vector3, color: number) {
+      const arrowGeom = new THREE.CylinderGeometry(0.008, 0.008, axisLength, 6);
+      arrowGeom.translate(0, axisLength / 2, 0);
+      const arrowMat = new THREE.MeshBasicMaterial({ color });
+      const arrow = new THREE.Mesh(arrowGeom, arrowMat);
+      arrow.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), dir);
+      return arrow;
+    }
+
+    axesGroup.add(makeAxis(new THREE.Vector3(1, 0, 0), 0xEF4444));
+    axesGroup.add(makeAxis(new THREE.Vector3(0, 1, 0), 0x22C55E));
+    axesGroup.add(makeAxis(new THREE.Vector3(0, 0, 1), 0x3B82F6));
+    axesGroup.position.set(0, 0.052, 0);
+    simGroup.add(axesGroup);
+
+    // State management
+    let currentState = 0;
+    let userInteracted = false;
+    let autoCycleTimer: ReturnType<typeof setInterval>;
+
+    function setState(state: number) {
+      currentState = state;
+      wireGroup.visible = state === 0;
+      texGroup.visible = state === 1;
+      simGroup.visible = state === 2;
+
+      if (physicsLabels) {
+        physicsLabels.style.opacity = state === 2 ? '1' : '0';
+      }
+
+      statePills.forEach((pill) => {
+        const pillState = parseInt(pill.getAttribute('data-state') || '0');
+        if (pillState === state) {
+          pill.classList.add('active');
+        } else {
+          pill.classList.remove('active');
+        }
+      });
+    }
+
+    statePills.forEach((pill) => {
+      pill.addEventListener('click', () => {
+        const state = parseInt(pill.getAttribute('data-state') || '0');
+        setState(state);
+        userInteracted = true;
+        clearInterval(autoCycleTimer);
+        // Resume auto-cycle after 8 seconds of inactivity
+        autoCycleTimer = setInterval(() => {
+          if (!userInteracted) {
+            setState((currentState + 1) % 3);
+          }
+          userInteracted = false;
+        }, 3000);
+      });
+    });
+
+    // Auto-cycle states
+    autoCycleTimer = setInterval(() => {
+      if (!userInteracted) {
+        setState((currentState + 1) % 3);
+      }
+      userInteracted = false;
+    }, 3000);
+
+    // Mouse interaction for rotation
+    let isDragging = false;
+    let previousMouseX = 0;
+    let rotationY = 0;
+    let targetRotationY = 0;
+
+    container.addEventListener('pointerdown', (e) => {
+      isDragging = true;
+      previousMouseX = e.clientX;
+      userInteracted = true;
+    });
+
+    window.addEventListener('pointermove', (e) => {
+      if (isDragging) {
+        const deltaX = e.clientX - previousMouseX;
+        targetRotationY += deltaX * 0.008;
+        previousMouseX = e.clientX;
+      }
+    });
+
+    window.addEventListener('pointerup', () => {
+      isDragging = false;
+    });
+
+    // Animation loop
+    function animate() {
+      requestAnimationFrame(animate);
+
+      // Smooth rotation
+      if (!isDragging) {
+        targetRotationY += 0.003;
+      }
+      rotationY += (targetRotationY - rotationY) * 0.08;
+      mugGroup.rotation.y = rotationY;
+
+      // Gentle bob
+      mugGroup.position.y = Math.sin(Date.now() * 0.001) * 0.03;
+
+      // Pulse the collision mesh opacity
+      if (currentState === 2) {
+        physicsWireMat.opacity = 0.2 + Math.sin(Date.now() * 0.003) * 0.15;
+        comMat.color.setHSL(0.12, 1, 0.5 + Math.sin(Date.now() * 0.004) * 0.1);
+      }
+
+      renderer.render(scene, camera);
+    }
+
+    animate();
+  }
+</script>
+
+<style>
+  .state-pill {
+    color: #A1A1AA;
+    border-color: rgba(255, 255, 255, 0.06);
+    background: rgba(10, 10, 11, 0.8);
+    backdrop-filter: blur(8px);
+  }
+  .state-pill:hover {
+    color: #FAFAFA;
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+  .state-pill.active {
+    color: #F59E0B;
+    border-color: rgba(245, 158, 11, 0.4);
+    background: rgba(245, 158, 11, 0.08);
+  }
+</style>

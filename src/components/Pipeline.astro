@@ -1,0 +1,70 @@
+---
+import CodeBlock from './CodeBlock.astro';
+import { USD_CODE } from '../lib/constants';
+---
+
+<section id="how-it-works" class="relative py-28 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16 reveal">
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-text mb-4">
+        From photos to physics in three steps
+      </h2>
+      <p class="text-text-secondary text-lg max-w-xl mx-auto">
+        No manual annotation. No physics expertise required. Upload, process, deploy.
+      </p>
+    </div>
+
+    <!-- Three steps -->
+    <div class="grid md:grid-cols-3 gap-6 mb-16">
+      <!-- Step 1: Upload -->
+      <div class="reveal reveal-delay-1 group relative p-6 rounded-xl border border-[rgba(255,255,255,0.06)] bg-bg-card hover:border-[rgba(255,255,255,0.12)] transition-all duration-300">
+        <div class="w-10 h-10 rounded-lg bg-amber/[0.08] border border-amber/20 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-amber" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
+          </svg>
+        </div>
+        <div class="text-xs font-mono text-amber/60 mb-2 tracking-wider uppercase">Step 01</div>
+        <h3 class="text-lg font-semibold text-text mb-2">Upload</h3>
+        <p class="text-sm text-text-secondary leading-relaxed">
+          Drop product photos or any 3D file. We accept <span class="font-mono text-xs text-blue">.glb</span> <span class="font-mono text-xs text-blue">.fbx</span> <span class="font-mono text-xs text-blue">.obj</span> <span class="font-mono text-xs text-blue">.step</span> <span class="font-mono text-xs text-blue">.stl</span>
+        </p>
+      </div>
+
+      <!-- Step 2: AI estimates physics -->
+      <div class="reveal reveal-delay-2 group relative p-6 rounded-xl border border-[rgba(255,255,255,0.06)] bg-bg-card hover:border-[rgba(255,255,255,0.12)] transition-all duration-300">
+        <div class="w-10 h-10 rounded-lg bg-amber/[0.08] border border-amber/20 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-amber" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z" />
+          </svg>
+        </div>
+        <div class="text-xs font-mono text-amber/60 mb-2 tracking-wider uppercase">Step 02</div>
+        <h3 class="text-lg font-semibold text-text mb-2">AI estimates physics</h3>
+        <p class="text-sm text-text-secondary leading-relaxed">
+          LLM vision identifies materials. Estimates mass, friction, elasticity, center of mass. Generates collision meshes.
+        </p>
+      </div>
+
+      <!-- Step 3: Download -->
+      <div class="reveal reveal-delay-3 group relative p-6 rounded-xl border border-[rgba(255,255,255,0.06)] bg-bg-card hover:border-[rgba(255,255,255,0.12)] transition-all duration-300">
+        <div class="w-10 h-10 rounded-lg bg-amber/[0.08] border border-amber/20 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-amber" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5m8.25 3v6.75m0 0l-3-3m3 3l3-3M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
+          </svg>
+        </div>
+        <div class="text-xs font-mono text-amber/60 mb-2 tracking-wider uppercase">Step 03</div>
+        <h3 class="text-lg font-semibold text-text mb-2">Download SimReady USD</h3>
+        <p class="text-sm text-text-secondary leading-relaxed">
+          Validated OpenUSD with USDPhysics schemas. Ready for Isaac Sim, MuJoCo, Gazebo, Unity.
+        </p>
+      </div>
+    </div>
+
+    <!-- Code output preview -->
+    <div class="reveal max-w-3xl mx-auto">
+      <div class="text-center mb-6">
+        <span class="text-xs font-mono text-text-secondary tracking-wider uppercase">Output preview</span>
+      </div>
+      <CodeBlock code={USD_CODE} filename="ceramic_mug.usda" />
+    </div>
+  </div>
+</section>
