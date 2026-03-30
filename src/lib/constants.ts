@@ -8,9 +8,7 @@ export const PLATFORMS = [
   { name: 'NVIDIA Isaac Sim', supported: true },
   { name: 'MuJoCo', supported: true },
   { name: 'Gazebo / ROS 2', supported: true },
-  { name: 'Unity', supported: true },
   { name: 'Unreal Engine', supported: true },
-  { name: 'OpenUSD native', supported: true },
 ] as const;
 
 export const STATS = [

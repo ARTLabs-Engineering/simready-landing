@@ -1,5 +1,4 @@
 ---
-import { PLATFORMS } from '../lib/constants';
 ---
 
 <section id="compatibility" class="relative py-28 px-6">
@@ -10,39 +9,68 @@ import { PLATFORMS } from '../lib/constants';
       </h2>
     </div>
 
-    <!-- Platform badges -->
-    <div class="flex flex-wrap justify-center gap-4 mb-10 reveal">
-      {PLATFORMS.map((platform) => (
-        <div class="flex items-center gap-2.5 px-5 py-3 rounded-lg border border-[rgba(255,255,255,0.06)] bg-bg-card hover:border-[rgba(255,255,255,0.12)] transition-colors">
-          <svg class="w-4 h-4 text-green flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-          </svg>
-          <span class="text-sm font-medium text-text">{platform.name}</span>
-        </div>
-      ))}
-    </div>
+    <!-- Platform logos -->
+    <div class="flex flex-wrap justify-center items-center gap-10 sm:gap-14 lg:gap-20 reveal">
 
-    <!-- NVIDIA Inception badge -->
-    <div class="flex justify-center mb-10 reveal reveal-delay-1">
-      <div class="flex items-center gap-3 px-5 py-3 rounded-lg border border-green/20 bg-green/[0.04]">
-        <!-- NVIDIA logo simplified -->
-        <svg class="w-5 h-5 text-green" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M8.948 8.798V7.157c.12-.007.243-.011.368-.011 2.27 0 3.655 1.95 3.655 1.95s-1.566 2.222-3.252 2.222c-.284 0-.544-.052-.771-.143V8.798zm0-3.236v-1.39l.204-.013c3.652-.186 6.073 2.862 6.073 2.862s-3.342 3.753-5.694 3.753c-.214 0-.406-.027-.583-.073V5.562zm0 7.607v.586H7.404c.009-4.272 3.236-6.6 5.53-6.6.153 0 .281.013.281.013v1.584c-.098-.013-.202-.02-.31-.02-1.727 0-3.32 1.543-3.957 4.437zM2 12c0 5.523 4.477 10 10 10s10-4.477 10-10S17.523 2 12 2 2 6.477 2 12z"/>
+      <!-- NVIDIA Isaac Sim -->
+      <div class="group flex flex-col items-center gap-3 opacity-70 hover:opacity-100 transition-opacity duration-300">
+        <svg class="w-28 h-28 sm:w-32 sm:h-32" viewBox="0 0 120 120" fill="none">
+          <!-- Green square -->
+          <rect x="32" y="12" width="52" height="52" fill="#76B900"/>
+          <!-- Eye shape -->
+          <path d="M58 18C45 18 36 28 36 40C36 52 45 62 58 62C71 62 80 52 80 40" stroke="white" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <path d="M58 28C51 28 46 34 46 40C46 46 51 52 58 52C65 52 70 46 70 40" stroke="white" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <circle cx="58" cy="40" r="6" fill="white"/>
+          <!-- Text -->
+          <text x="60" y="85" text-anchor="middle" fill="#A1A1AA" font-family="Geist, system-ui, sans-serif" font-weight="700" font-size="14" letter-spacing="1">NVIDIA</text>
+          <text x="60" y="102" text-anchor="middle" fill="#FAFAFA" font-family="Geist, system-ui, sans-serif" font-weight="600" font-size="12">Isaac Sim</text>
         </svg>
-        <div class="text-sm">
-          <span class="text-green font-medium">NVIDIA Inception</span>
-          <span class="text-text-secondary"> Program Member</span>
-        </div>
       </div>
-    </div>
 
-    <!-- Output format info -->
-    <div class="text-center reveal reveal-delay-2">
-      <p class="text-sm text-text-secondary font-mono">
-        Output: <span class="text-text">OpenUSD (.usd/.usda)</span> with USDPhysics schemas
-        <span class="mx-2 text-[rgba(255,255,255,0.2)]">|</span>
-        Also exports: <span class="text-text">URDF</span>, <span class="text-text">MJCF</span>, <span class="text-text">.obj+metadata</span>
-      </p>
+      <!-- MuJoCo -->
+      <div class="group flex flex-col items-center gap-3 opacity-70 hover:opacity-100 transition-opacity duration-300">
+        <svg class="w-28 h-28 sm:w-32 sm:h-32" viewBox="0 0 120 120" fill="none">
+          <text x="60" y="50" text-anchor="middle" fill="#4A7EF5" font-family="Geist, system-ui, sans-serif" font-weight="700" font-size="28" letter-spacing="-0.5">MuJoCo</text>
+          <text x="60" y="74" text-anchor="middle" fill="#A1A1AA" font-family="Geist, system-ui, sans-serif" font-weight="400" font-size="10">Advanced physics</text>
+          <text x="60" y="88" text-anchor="middle" fill="#A1A1AA" font-family="Geist, system-ui, sans-serif" font-weight="400" font-size="10">simulation</text>
+          <!-- Decorative polygon lines -->
+          <polygon points="20,15 100,10 110,55 95,95 25,90 10,50" fill="none" stroke="#4A7EF5" stroke-width="0.8" opacity="0.3"/>
+          <polygon points="15,20 95,18 105,50 90,88 22,85 8,45" fill="none" stroke="#4A7EF5" stroke-width="0.5" opacity="0.15"/>
+        </svg>
+      </div>
+
+      <!-- Gazebo -->
+      <div class="group flex flex-col items-center gap-3 opacity-70 hover:opacity-100 transition-opacity duration-300">
+        <svg class="w-28 h-28 sm:w-32 sm:h-32" viewBox="0 0 120 120" fill="none">
+          <!-- Cube shape inspired by Gazebo logo -->
+          <path d="M60 20L90 38V68L60 86L30 68V38Z" fill="none" stroke="#F59E0B" stroke-width="2.5"/>
+          <path d="M60 20L90 38L60 52L30 38Z" fill="#F59E0B" opacity="0.3"/>
+          <path d="M60 52V86L30 68V38Z" fill="#F59E0B" opacity="0.1"/>
+          <path d="M60 52V86L90 68V38Z" fill="#F59E0B" opacity="0.2"/>
+          <!-- Inner accent -->
+          <path d="M60 30L78 40L60 50L42 40Z" fill="#F59E0B" opacity="0.6"/>
+          <!-- Text -->
+          <text x="60" y="108" text-anchor="middle" fill="#FAFAFA" font-family="Geist, system-ui, sans-serif" font-weight="500" font-size="13" letter-spacing="3">GAZEBO</text>
+        </svg>
+      </div>
+
+      <!-- Unreal Engine -->
+      <div class="group flex flex-col items-center gap-3 opacity-70 hover:opacity-100 transition-opacity duration-300">
+        <svg class="w-28 h-28 sm:w-32 sm:h-32" viewBox="0 0 120 120" fill="none">
+          <!-- Circle -->
+          <circle cx="60" cy="46" r="30" fill="#FAFAFA" opacity="0.9"/>
+          <circle cx="60" cy="46" r="27" fill="#0A0A0B"/>
+          <!-- U letterform -->
+          <path d="M48 32V52C48 58 53 62 60 62C67 62 72 58 72 52V32" stroke="#FAFAFA" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <!-- Decorative serif on U -->
+          <path d="M52 32L44 36" stroke="#FAFAFA" stroke-width="2.5" stroke-linecap="round"/>
+          <!-- Text -->
+          <text x="60" y="95" text-anchor="middle" fill="#FAFAFA" font-family="Geist, system-ui, sans-serif" font-weight="700" font-size="11" letter-spacing="1.5">UNREAL</text>
+          <text x="60" y="110" text-anchor="middle" fill="#A1A1AA" font-family="Geist, system-ui, sans-serif" font-weight="600" font-size="10" letter-spacing="1">ENGINE</text>
+        </svg>
+      </div>
+
+
     </div>
   </div>
 </section>
