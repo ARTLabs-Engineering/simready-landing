@@ -115,6 +115,7 @@ import TryNowButton from './TryNowButton.astro';
 
 <script>
   import * as THREE from 'three';
+  import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
   const canvas = document.getElementById('hero-canvas') as HTMLCanvasElement;
   const container = document.getElementById('scene-container') as HTMLElement;
@@ -124,8 +125,8 @@ import TryNowButton from './TryNowButton.astro';
   if (canvas && container) {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 100);
-    camera.position.set(0, 1.2, 4);
-    camera.lookAt(0, 0.4, 0);
+    camera.position.set(0, 0.15, 4.5);
+    camera.lookAt(0, 0.15, 0);
 
     const renderer = new THREE.WebGLRenderer({
       canvas,
@@ -161,44 +162,16 @@ import TryNowButton from './TryNowButton.astro';
     rimLight.position.set(0, 3, -4);
     scene.add(rimLight);
 
-    // Create a mug geometry
-    const mugGroup = new THREE.Group();
-    scene.add(mugGroup);
+    // Root group for the model
+    const modelGroup = new THREE.Group();
+    scene.add(modelGroup);
 
-    // Mug body (cylinder)
-    const bodyGeom = new THREE.CylinderGeometry(0.45, 0.4, 1.0, 32, 1, true);
-    const bottomGeom = new THREE.CircleGeometry(0.4, 32);
-    bottomGeom.rotateX(-Math.PI / 2);
-    bottomGeom.translate(0, -0.5, 0);
-
-    // Handle (torus)
-    const handleGeom = new THREE.TorusGeometry(0.25, 0.04, 12, 24, Math.PI);
-    handleGeom.rotateZ(Math.PI / 2);
-    handleGeom.translate(0.5, 0.0, 0);
-
-    // Rim
-    const rimGeom = new THREE.TorusGeometry(0.45, 0.02, 8, 32);
-    rimGeom.rotateX(Math.PI / 2);
-    rimGeom.translate(0, 0.5, 0);
-
-    // Materials
+    // Materials for each state
     const wireframeMat = new THREE.MeshBasicMaterial({
       color: 0xfafafa,
       wireframe: true,
       transparent: true,
       opacity: 0.7,
-    });
-
-    const ceramicMat = new THREE.MeshStandardMaterial({
-      color: 0xE8E0D4,
-      roughness: 0.35,
-      metalness: 0.0,
-    });
-
-    const handleMat = new THREE.MeshStandardMaterial({
-      color: 0xE8E0D4,
-      roughness: 0.35,
-      metalness: 0.0,
     });
 
     const physicsWireMat = new THREE.MeshBasicMaterial({
@@ -208,68 +181,110 @@ import TryNowButton from './TryNowButton.astro';
       opacity: 0.35,
     });
 
-    // Create meshes for each state
-    // State 0: Wireframe
-    const wireBody = new THREE.Mesh(bodyGeom, wireframeMat);
-    const wireBottom = new THREE.Mesh(bottomGeom, wireframeMat);
-    const wireHandle = new THREE.Mesh(handleGeom, wireframeMat);
-    const wireRim = new THREE.Mesh(rimGeom, wireframeMat);
-    const wireGroup = new THREE.Group();
-    wireGroup.add(wireBody, wireBottom, wireHandle, wireRim);
-    mugGroup.add(wireGroup);
-
-    // State 1: Textured
-    const texBody = new THREE.Mesh(bodyGeom, ceramicMat);
-    const texBottom = new THREE.Mesh(bottomGeom, ceramicMat);
-    const texHandle = new THREE.Mesh(handleGeom, handleMat);
-    const texRim = new THREE.Mesh(rimGeom, ceramicMat);
-    const texGroup = new THREE.Group();
-    texGroup.add(texBody, texBottom, texHandle, texRim);
-    texGroup.visible = false;
-    mugGroup.add(texGroup);
-
-    // State 2: SimReady (textured + physics overlay)
-    const simBody = new THREE.Mesh(bodyGeom, ceramicMat.clone());
-    const simBottom = new THREE.Mesh(bottomGeom, ceramicMat.clone());
-    const simHandle = new THREE.Mesh(handleGeom, handleMat.clone());
-    const simRim = new THREE.Mesh(rimGeom, ceramicMat.clone());
-
-    // Collision mesh overlay (slightly scaled up)
-    const collisionGeom = new THREE.CylinderGeometry(0.5, 0.45, 1.1, 8, 1);
-    const collisionMesh = new THREE.Mesh(collisionGeom, physicsWireMat);
-
-    const simGroup = new THREE.Group();
-    simGroup.add(simBody, simBottom, simHandle, simRim, collisionMesh);
-    simGroup.visible = false;
-    mugGroup.add(simGroup);
-
-    // Center of mass indicator for SimReady state
-    const comGeom = new THREE.SphereGeometry(0.04, 16, 16);
     const comMat = new THREE.MeshBasicMaterial({ color: 0xF59E0B });
-    const comMesh = new THREE.Mesh(comGeom, comMat);
-    comMesh.position.set(0, 0.052, 0);
-    simGroup.add(comMesh);
 
-    // Axes helper for SimReady
-    const axesGroup = new THREE.Group();
-    const axisLength = 0.3;
+    // State groups
+    const wireGroup = new THREE.Group();
+    const texGroup = new THREE.Group();
+    const simGroup = new THREE.Group();
+    texGroup.visible = false;
+    simGroup.visible = false;
+    modelGroup.add(wireGroup, texGroup, simGroup);
 
-    function makeAxis(dir: THREE.Vector3, color: number) {
-      const arrowGeom = new THREE.CylinderGeometry(0.008, 0.008, axisLength, 6);
-      arrowGeom.translate(0, axisLength / 2, 0);
-      const arrowMat = new THREE.MeshBasicMaterial({ color });
-      const arrow = new THREE.Mesh(arrowGeom, arrowMat);
-      arrow.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), dir);
-      return arrow;
-    }
+    // ─── Load GLB model ───────────────────────────────────────
+    // Replace /model.glb in public/ with your own .glb file.
+    const loader = new GLTFLoader();
+    loader.load(
+      '/model.glb',
+      (gltf) => {
+        const model = gltf.scene;
 
-    axesGroup.add(makeAxis(new THREE.Vector3(1, 0, 0), 0xEF4444));
-    axesGroup.add(makeAxis(new THREE.Vector3(0, 1, 0), 0x22C55E));
-    axesGroup.add(makeAxis(new THREE.Vector3(0, 0, 1), 0x3B82F6));
-    axesGroup.position.set(0, 0.052, 0);
-    simGroup.add(axesGroup);
+        // Auto-center and scale the model to fit the viewport
+        const box = new THREE.Box3().setFromObject(model);
+        const center = box.getCenter(new THREE.Vector3());
+        const size = box.getSize(new THREE.Vector3());
+        const maxDim = Math.max(size.x, size.y, size.z);
+        const scale = 1.8 / maxDim;
 
-    // State management
+        // Helper: prepare a clone — center it, then scale
+        function prepareClone(src: THREE.Object3D) {
+          const clone = src.clone();
+          // Wrap in a pivot group for clean centering
+          const pivot = new THREE.Group();
+          pivot.add(clone);
+          // Offset so the center of the bounding box lands at origin
+          clone.position.set(-center.x, -center.y, -center.z);
+          pivot.scale.setScalar(scale);
+          return pivot;
+        }
+
+        // State 0: Wireframe clone
+        const wirePivot = prepareClone(model);
+        wirePivot.traverse((child) => {
+          if ((child as THREE.Mesh).isMesh) {
+            (child as THREE.Mesh).material = wireframeMat;
+          }
+        });
+        wireGroup.add(wirePivot);
+
+        // State 1: Textured (original materials)
+        const texPivot = prepareClone(model);
+        texGroup.add(texPivot);
+
+        // State 2: SimReady (original materials + physics overlay)
+        const simPivot = prepareClone(model);
+        simGroup.add(simPivot);
+
+        // Collision mesh overlay (bounding box wireframe, slightly enlarged)
+        const collisionGeom = new THREE.BoxGeometry(
+          size.x * scale * 1.08,
+          size.y * scale * 1.08,
+          size.z * scale * 1.08
+        );
+        const collisionMesh = new THREE.Mesh(collisionGeom, physicsWireMat);
+        simGroup.add(collisionMesh);
+
+        // Center of mass indicator
+        const comGeom = new THREE.SphereGeometry(0.04, 16, 16);
+        const comMesh = new THREE.Mesh(comGeom, comMat);
+        simGroup.add(comMesh);
+
+        // Axes helper
+        const axisLength = 0.3;
+        function makeAxis(dir: THREE.Vector3, color: number) {
+          const arrowGeom = new THREE.CylinderGeometry(0.008, 0.008, axisLength, 6);
+          arrowGeom.translate(0, axisLength / 2, 0);
+          const arrowMat = new THREE.MeshBasicMaterial({ color });
+          const arrow = new THREE.Mesh(arrowGeom, arrowMat);
+          arrow.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), dir);
+          return arrow;
+        }
+        const axesGroup = new THREE.Group();
+        axesGroup.add(makeAxis(new THREE.Vector3(1, 0, 0), 0xEF4444));
+        axesGroup.add(makeAxis(new THREE.Vector3(0, 1, 0), 0x22C55E));
+        axesGroup.add(makeAxis(new THREE.Vector3(0, 0, 1), 0x3B82F6));
+        simGroup.add(axesGroup);
+      },
+      undefined,
+      (error) => {
+        console.warn('GLB model not found at /model.glb — place your .glb file in public/model.glb', error);
+        // Fallback: show a placeholder cube
+        const fallbackGeom = new THREE.BoxGeometry(0.8, 0.8, 0.8);
+        wireGroup.add(new THREE.Mesh(fallbackGeom, wireframeMat));
+
+        const fallbackMat = new THREE.MeshStandardMaterial({ color: 0xE8E0D4, roughness: 0.35 });
+        texGroup.add(new THREE.Mesh(fallbackGeom, fallbackMat));
+
+        const simMesh = new THREE.Mesh(fallbackGeom, fallbackMat.clone());
+        const collisionGeom = new THREE.BoxGeometry(0.9, 0.9, 0.9);
+        simGroup.add(simMesh, new THREE.Mesh(collisionGeom, physicsWireMat));
+
+        const comGeom = new THREE.SphereGeometry(0.04, 16, 16);
+        simGroup.add(new THREE.Mesh(comGeom, comMat));
+      }
+    );
+
+    // ─── State management ─────────────────────────────────────
     let currentState = 0;
     let userInteracted = false;
     let autoCycleTimer: ReturnType<typeof setInterval>;
@@ -300,7 +315,6 @@ import TryNowButton from './TryNowButton.astro';
         setState(state);
         userInteracted = true;
         clearInterval(autoCycleTimer);
-        // Resume auto-cycle after 8 seconds of inactivity
         autoCycleTimer = setInterval(() => {
           if (!userInteracted) {
             setState((currentState + 1) % 3);
@@ -318,7 +332,7 @@ import TryNowButton from './TryNowButton.astro';
       userInteracted = false;
     }, 3000);
 
-    // Mouse interaction for rotation
+    // ─── Mouse interaction ────────────────────────────────────
     let isDragging = false;
     let previousMouseX = 0;
     let rotationY = 0;
@@ -342,21 +356,20 @@ import TryNowButton from './TryNowButton.astro';
       isDragging = false;
     });
 
-    // Animation loop
+    // ─── Animation loop ───────────────────────────────────────
     function animate() {
       requestAnimationFrame(animate);
 
-      // Smooth rotation
       if (!isDragging) {
         targetRotationY += 0.003;
       }
       rotationY += (targetRotationY - rotationY) * 0.08;
-      mugGroup.rotation.y = rotationY;
+      modelGroup.rotation.y = rotationY;
 
       // Gentle bob
-      mugGroup.position.y = Math.sin(Date.now() * 0.001) * 0.03;
+      modelGroup.position.y = Math.sin(Date.now() * 0.001) * 0.03;
 
-      // Pulse the collision mesh opacity
+      // Pulse collision mesh & CoM in SimReady state
       if (currentState === 2) {
         physicsWireMat.opacity = 0.2 + Math.sin(Date.now() * 0.003) * 0.15;
         comMat.color.setHSL(0.12, 1, 0.5 + Math.sin(Date.now() * 0.004) * 0.1);
