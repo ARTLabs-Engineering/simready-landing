@@ -1,0 +1,152 @@
+---
+---
+
+<section id="pricing" class="relative py-28 px-6">
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[400px] h-px bg-gradient-to-r from-transparent via-amber/20 to-transparent"></div>
+
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-12 reveal">
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-text mb-4">
+        Simple pricing
+      </h2>
+      <p class="text-text-secondary text-lg max-w-xl mx-auto">
+        Start creating sim-ready assets today.
+      </p>
+    </div>
+
+    <!-- Toggle -->
+    <div class="flex items-center justify-center gap-3 mb-12 reveal">
+      <span id="label-monthly" class="text-sm font-medium text-text">Monthly</span>
+      <button
+        id="billing-toggle"
+        class="relative w-12 h-6 rounded-full bg-[rgba(255,255,255,0.08)] border border-[rgba(255,255,255,0.06)] transition-colors"
+        aria-label="Toggle annual billing"
+      >
+        <span id="toggle-dot" class="absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-amber transition-transform duration-200"></span>
+      </button>
+      <span id="label-yearly" class="text-sm font-medium text-text-secondary">
+        Yearly <span class="text-xs text-amber ml-1">Save 34%</span>
+      </span>
+    </div>
+
+    <!-- Cards -->
+    <div class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+
+      <!-- Starter -->
+      <div class="reveal reveal-delay-1 rounded-2xl border border-amber/30 bg-bg-card p-8 relative overflow-hidden">
+        <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber/40 to-transparent"></div>
+
+        <p class="text-xs font-mono text-amber/60 tracking-wider uppercase mb-4">Starter</p>
+
+        <div class="mb-6">
+          <div class="flex items-baseline gap-1">
+            <span id="price-value" class="text-4xl sm:text-5xl font-bold text-text tracking-tight" style="font-family: 'Geist', system-ui, sans-serif;">$29</span>
+            <span class="text-text-secondary text-sm">/month</span>
+          </div>
+          <p id="price-note" class="text-xs text-text-secondary mt-1 h-4"></p>
+        </div>
+
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-start gap-2.5 text-sm text-text-secondary">
+            <svg class="w-4 h-4 text-amber mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+            </svg>
+            10 sim-ready objects
+          </li>
+          <li class="flex items-start gap-2.5 text-sm text-text-secondary">
+            <svg class="w-4 h-4 text-amber mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+            </svg>
+            Priority support
+          </li>
+        </ul>
+
+        <a href="#" class="block w-full text-center py-3 px-6 rounded-lg bg-amber text-bg font-semibold text-sm hover:bg-amber/90 transition-colors">
+          Get started
+        </a>
+      </div>
+
+      <!-- Enterprise -->
+      <div class="reveal reveal-delay-2 rounded-2xl border border-[rgba(255,255,255,0.06)] bg-bg-card p-8 relative">
+
+        <p class="text-xs font-mono text-text-secondary tracking-wider uppercase mb-4">Enterprise</p>
+
+        <div class="mb-6">
+          <div class="flex items-baseline gap-1">
+            <span class="text-4xl sm:text-5xl font-bold text-text tracking-tight" style="font-family: 'Geist', system-ui, sans-serif;">Custom</span>
+          </div>
+          <p class="text-xs text-text-secondary mt-1 h-4">Tailored to your pipeline</p>
+        </div>
+
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-start gap-2.5 text-sm text-text-secondary">
+            <svg class="w-4 h-4 text-amber mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+            </svg>
+            API access
+          </li>
+          <li class="flex items-start gap-2.5 text-sm text-text-secondary">
+            <svg class="w-4 h-4 text-amber mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+            </svg>
+            Usage-based pricing
+          </li>
+          <li class="flex items-start gap-2.5 text-sm text-text-secondary">
+            <svg class="w-4 h-4 text-amber mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+            </svg>
+            Exclusive access to new features
+          </li>
+          <li class="flex items-start gap-2.5 text-sm text-text-secondary">
+            <svg class="w-4 h-4 text-amber mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+            </svg>
+            <a href="https://cal.com/ugur-yekta/30min" target="_blank" rel="noopener noreferrer" class="text-amber hover:underline">Talk with CEO</a>
+          </li>
+        </ul>
+
+        <a href="https://cal.com/ugur-yekta/30min" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-3 px-6 rounded-lg border border-border-hover text-text font-semibold text-sm hover:border-amber/40 hover:text-amber transition-colors">
+          Contact us
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  const toggle = document.getElementById('billing-toggle');
+  const dot = document.getElementById('toggle-dot');
+  const priceValue = document.getElementById('price-value');
+  const priceNote = document.getElementById('price-note');
+  const labelMonthly = document.getElementById('label-monthly');
+  const labelYearly = document.getElementById('label-yearly');
+
+  let isYearly = false;
+
+  toggle?.addEventListener('click', () => {
+    isYearly = !isYearly;
+
+    if (dot) {
+      dot.style.transform = isYearly ? 'translateX(24px)' : 'translateX(0)';
+    }
+
+    if (priceValue) {
+      priceValue.textContent = isYearly ? '$19' : '$29';
+    }
+
+    if (priceNote) {
+      priceNote.textContent = isYearly ? 'Billed $228 annually' : '';
+    }
+
+    if (labelMonthly) {
+      labelMonthly.classList.toggle('text-text', !isYearly);
+      labelMonthly.classList.toggle('text-text-secondary', isYearly);
+    }
+
+    if (labelYearly) {
+      labelYearly.classList.toggle('text-text', isYearly);
+      labelYearly.classList.toggle('text-text-secondary', !isYearly);
+    }
+  });
+</script>
