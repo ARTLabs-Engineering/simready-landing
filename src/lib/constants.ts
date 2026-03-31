@@ -18,7 +18,7 @@ export const STATS = [
   },
   {
     value: '40%',
-    label: 'increase in sim-to-real success via domain randomization vs. real data alone',
+    label: 'Better real-world performance when training combines synthetic + real data. But only with physics-accurate assets.',
   },
   {
     value: '97%',
