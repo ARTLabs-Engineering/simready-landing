@@ -95,16 +95,16 @@ import TryNowButton from './TryNowButton.astro';
           <!-- Physics labels (shown in SimReady state) -->
           <div id="physics-labels" class="absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-500 z-10">
             <div class="absolute top-[18%] right-[12%] font-mono text-xs text-amber bg-bg/80 backdrop-blur-sm px-2.5 py-1 rounded border border-amber/20">
-              mass: 340g
+              mass: 1.82kg
             </div>
             <div class="absolute top-[45%] left-[8%] font-mono text-xs text-amber bg-bg/80 backdrop-blur-sm px-2.5 py-1 rounded border border-amber/20">
-              friction: 0.42
+              friction: 0.55
             </div>
             <div class="absolute bottom-[25%] right-[15%] font-mono text-xs text-amber bg-bg/80 backdrop-blur-sm px-2.5 py-1 rounded border border-amber/20">
-              material: ceramic
+              material: steel + ABS
             </div>
             <div class="absolute bottom-[38%] left-[12%] font-mono text-xs text-amber bg-bg/80 backdrop-blur-sm px-2.5 py-1 rounded border border-amber/20">
-              restitution: 0.15
+              restitution: 0.08
             </div>
           </div>
         </div>
@@ -116,6 +116,7 @@ import TryNowButton from './TryNowButton.astro';
 <script>
   import * as THREE from 'three';
   import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+  import { ConvexGeometry } from 'three/addons/geometries/ConvexGeometry.js';
 
   const canvas = document.getElementById('hero-canvas') as HTMLCanvasElement;
   const container = document.getElementById('scene-container') as HTMLElement;
@@ -235,14 +236,32 @@ import TryNowButton from './TryNowButton.astro';
         const simPivot = prepareClone(model);
         simGroup.add(simPivot);
 
-        // Collision mesh overlay (bounding box wireframe, slightly enlarged)
-        const collisionGeom = new THREE.BoxGeometry(
-          size.x * scale * 1.08,
-          size.y * scale * 1.08,
-          size.z * scale * 1.08
-        );
-        const collisionMesh = new THREE.Mesh(collisionGeom, physicsWireMat);
-        simGroup.add(collisionMesh);
+        // Convex hull collision mesh from model vertices
+        const hullPoints: THREE.Vector3[] = [];
+        model.traverse((child) => {
+          if ((child as THREE.Mesh).isMesh) {
+            const mesh = child as THREE.Mesh;
+            const geom = mesh.geometry;
+            const pos = geom.getAttribute('position');
+            if (pos) {
+              // Sample vertices (take every Nth for performance on dense meshes)
+              const step = Math.max(1, Math.floor(pos.count / 500));
+              for (let i = 0; i < pos.count; i += step) {
+                const v = new THREE.Vector3(pos.getX(i), pos.getY(i), pos.getZ(i));
+                // Transform to world space, then center and scale
+                mesh.localToWorld(v);
+                v.sub(center).multiplyScalar(scale);
+                hullPoints.push(v);
+              }
+            }
+          }
+        });
+
+        if (hullPoints.length >= 4) {
+          const hullGeom = new ConvexGeometry(hullPoints);
+          const collisionMesh = new THREE.Mesh(hullGeom, physicsWireMat);
+          simGroup.add(collisionMesh);
+        }
 
         // Center of mass indicator
         const comGeom = new THREE.SphereGeometry(0.04, 16, 16);
