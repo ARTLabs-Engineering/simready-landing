@@ -17,16 +17,16 @@ export const STATS = [
     label: 'SimReady assets exist today (NVIDIA\'s library). Your warehouse has 50,000 SKUs.',
   },
   {
-    value: 'Weeks',
-    label: 'Time to manually author physics properties for a single complex object.',
+    value: '40%',
+    label: 'increase in sim-to-real success via domain randomization vs. real data alone',
   },
   {
-    value: '80%',
-    label: 'Of simulation setup time is spent on asset preparation, not training.',
+    value: '97%',
+    label: 'Cost reduction in scene preparation. Quality you need at fraction of the time.',
   },
   {
-    value: '$650K',
-    label: 'Annual losses from a single mining operation due to undetected objects in simulation.',
+    value: '$370K',
+    label: 'saved per 1,000-object warehouse simulation',
   },
 ] as const;
 
