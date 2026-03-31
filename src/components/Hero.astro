@@ -37,13 +37,32 @@ import TryNowButton from './TryNowButton.astro';
         </div>
 
         <h1 class="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold leading-[1.08] tracking-tight text-text">
-          Make any 3D object<br />
-          <span class="text-amber">simulation-ready</span><br />
+          Turn<br />
+          <span id="rotating-word" class="inline-block text-text italic transition-opacity duration-500">images</span> into<br />
+          <span class="text-amber">simulation-ready</span> assets<br />
           in minutes
         </h1>
 
+        <script>
+          (() => {
+            const words = ['images', 'descriptions', '3D objects'];
+            let index = 0;
+            const el = document.getElementById('rotating-word');
+            if (!el) return;
+
+            setInterval(() => {
+              el.style.opacity = '0';
+              setTimeout(() => {
+                index = (index + 1) % words.length;
+                el.textContent = words[index];
+                el.style.opacity = '1';
+              }, 500);
+            }, 3000);
+          })();
+        </script>
+
         <p class="text-base sm:text-lg text-text-secondary leading-relaxed max-w-lg">
-          3D models in, physics-enabled OpenUSD out. Ready for Isaac Sim, MuJoCo, Gazebo, and Unreal Engine.
+          Raw 3D/image/text in, physics-enabled OpenUSD out. Ready for Isaac Sim, MuJoCo, Gazebo, and Unreal Engine.
         </p>
 
         <div class="flex flex-col sm:flex-row items-start gap-4 pt-2">
