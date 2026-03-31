@@ -125,8 +125,8 @@ import TryNowButton from './TryNowButton.astro';
   if (canvas && container) {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 100);
-    camera.position.set(0, 0.15, 4.5);
-    camera.lookAt(0, 0.15, 0);
+    camera.position.set(0, 0, 4.5);
+    camera.lookAt(0, 0, 0);
 
     const renderer = new THREE.WebGLRenderer({
       canvas,
