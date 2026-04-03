@@ -3,17 +3,8 @@ import { TRACKS } from '../lib/constants';
 import TryNowButton from './TryNowButton.astro';
 ---
 
-<section id="tracks" class="relative py-28 px-6">
+<section id="tracks" class="relative pt-8 pb-28 px-6">
   <div class="max-w-6xl mx-auto">
-    <div class="text-center mb-16 reveal">
-      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-text mb-4">
-        Works with what you already have
-      </h2>
-      <p class="text-text-secondary text-lg max-w-xl mx-auto">
-        Three paths to simulation-ready assets. Start with what you've got.
-      </p>
-    </div>
-
     <div class="grid md:grid-cols-3 gap-6">
       {TRACKS.map((track, i) => (
         <div
