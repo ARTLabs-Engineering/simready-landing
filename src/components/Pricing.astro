@@ -25,7 +25,7 @@
         <span id="toggle-dot" class="absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-amber transition-transform duration-200"></span>
       </button>
       <span id="label-yearly" class="text-sm font-medium text-text-secondary">
-        Yearly <span class="text-xs text-amber ml-1">Save 32%</span>
+        Yearly <span class="text-xs text-amber ml-1">Save 34%</span>
       </span>
     </div>
 
@@ -40,7 +40,7 @@
 
         <div class="mb-6">
           <div class="flex items-baseline gap-1">
-            <span id="price-value" class="text-4xl sm:text-5xl font-bold text-text tracking-tight" style="font-family: 'Geist', system-ui, sans-serif;">$19</span>
+            <span id="price-value" class="text-4xl sm:text-5xl font-bold text-text tracking-tight" style="font-family: 'Geist', system-ui, sans-serif;">$29</span>
             <span class="text-text-secondary text-sm">/month</span>
           </div>
           <p id="price-note" class="text-xs text-text-secondary mt-1 h-4"></p>
@@ -132,11 +132,11 @@
     }
 
     if (priceValue) {
-      priceValue.textContent = isYearly ? '$13' : '$19';
+      priceValue.textContent = isYearly ? '$19' : '$29';
     }
 
     if (priceNote) {
-      priceNote.textContent = isYearly ? 'Billed $156 annually' : '';
+      priceNote.textContent = isYearly ? 'Billed $228 annually' : '';
     }
 
     if (labelMonthly) {
