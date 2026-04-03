@@ -15,18 +15,22 @@ export const STATS = [
   {
     value: '1,000',
     label: 'SimReady assets exist today (NVIDIA\'s library). Your warehouse has 50,000 SKUs.',
+    source: 'Source: NVIDIA SimReady Asset Library, 2026',
   },
   {
     value: '40%',
     label: 'Better real-world performance when training combines synthetic + real data. But only with physics-accurate assets.',
+    source: 'Source: NVIDIA GR00T N1 Benchmark, 2025',
   },
   {
     value: '97%',
     label: 'Cost reduction in scene preparation. Quality you need at fraction of the time.',
+    source: 'Source: Based on $67/hr engineer rate (Glassdoor) \u00d7 avg 4hr manual workflow vs. automated',
   },
   {
     value: '$370K',
-    label: 'saved per 1,000-object warehouse simulation',
+    label: 'saved per 1,000-object simulation',
+    source: 'Source: 1,000 objects \u00d7 $380 manual cost ($67/hr \u00d7 4hrs) \u2212 $10 automated',
   },
 ] as const;
 
