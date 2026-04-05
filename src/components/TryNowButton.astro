@@ -10,17 +10,17 @@ const sizeClasses = size === 'large'
   : 'px-6 py-2.5 text-sm';
 ---
 
-<button
-  type="button"
+<a
+  href="https://app.rigyd.com"
   class:list={[
     'try-now-btn group relative inline-flex items-center justify-center font-semibold rounded-lg transition-all duration-200',
     'bg-amber text-[#0a0c18] hover:bg-[#bfca15] active:scale-[0.98]',
     'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber',
-    'cursor-pointer select-none',
+    'cursor-pointer select-none no-underline',
     sizeClasses,
     className,
   ]}
-  aria-label="Try SimReady now"
+  aria-label="Try Rigyd now"
 >
   <span class="relative z-10 flex items-center gap-2">
     Try now
@@ -28,4 +28,4 @@ const sizeClasses = size === 'large'
       <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
     </svg>
   </span>
-</button>
+</a>
