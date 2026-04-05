@@ -1,7 +1,7 @@
 export const SITE = {
-  title: 'SimReady Asset Conversion for Robotics | ArtLabs',
+  title: 'Rigyd — SimReady Asset Conversion for Robotics',
   description: 'Convert product photos and 3D models into physics-enabled, simulation-ready OpenUSD assets for Isaac Sim, MuJoCo, and Gazebo. AI-powered physics estimation.',
-  url: 'https://simready.artlabs.ai',
+  url: 'https://rigyd.com',
 };
 
 export const PLATFORMS = [
