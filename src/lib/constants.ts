@@ -1,6 +1,6 @@
 export const SITE = {
-  title: 'Rigyd — SimReady Asset Conversion for Robotics',
-  description: 'Convert product photos and 3D models into physics-enabled, simulation-ready OpenUSD assets for Isaac Sim, MuJoCo, and Gazebo. AI-powered physics estimation.',
+  title: 'Rigyd — Turn 3D Models into SimReady Assets for Robotics Simulation',
+  description: 'Rigyd converts raw 3D models, images, and text into physics-enabled OpenUSD assets with mass, friction, and collision meshes. Ready for NVIDIA Isaac Sim, MuJoCo, Gazebo, and Unreal Engine. 97% cost reduction vs manual workflows.',
   url: 'https://rigyd.com',
 };
 

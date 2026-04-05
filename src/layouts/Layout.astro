@@ -17,19 +17,27 @@ const { title = SITE.title, description = SITE.description } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={SITE.url} />
+
+    <!-- Keywords for search engines -->
+    <meta name="keywords" content="SimReady, simulation-ready assets, OpenUSD, robotics simulation, NVIDIA Isaac Sim, MuJoCo, Gazebo, Unreal Engine, physics estimation, collision meshes, domain randomization, sim-to-real, 3D asset conversion, embodied AI, robot training data" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Rigyd" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="/og-image.png" />
+    <meta property="og:image" content={`${SITE.url}/og-image.png`} />
     <meta property="og:url" content={SITE.url} />
+    <meta property="og:locale" content="en_US" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@artlabs_ai" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content="/og-image.png" />
+    <meta name="twitter:image" content={`${SITE.url}/og-image.png`} />
 
     <!-- Fonts: Space Grotesk + Geist Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -50,26 +58,146 @@ const { title = SITE.title, description = SITE.description } = Astro.props;
     </style>
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <title>{title}</title>
 
-    <!-- Structured Data -->
+    <!-- Structured Data: Organization -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Rigyd",
+      "url": "https://rigyd.com",
+      "logo": `${SITE.url}/favicon.svg`,
+      "description": "Rigyd is an AI-native infrastructure for converting raw 3D models into physics-enabled, simulation-ready OpenUSD assets for robotics training.",
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "artlabs",
+        "url": "https://artlabs.ai"
+      },
+      "sameAs": [
+        "https://twitter.com/artlabs_ai",
+        "https://linkedin.com/company/artlabs-ai",
+        "https://github.com/ARTLabs-Engineering"
+      ]
+    })} />
+
+    <!-- Structured Data: SoftwareApplication -->
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
       "name": "Rigyd",
       "applicationCategory": "DeveloperApplication",
+      "applicationSubCategory": "Robotics Simulation Tool",
       "description": description,
       "operatingSystem": "Web",
-      "offers": {
-        "@type": "Offer",
-        "price": "29",
-        "priceCurrency": "USD"
-      },
+      "url": "https://rigyd.com",
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Starter",
+          "price": "29",
+          "priceCurrency": "USD",
+          "billingIncrement": "monthly",
+          "description": "10 sim-ready objects per month with priority support"
+        },
+        {
+          "@type": "Offer",
+          "name": "Enterprise",
+          "price": "0",
+          "priceCurrency": "USD",
+          "description": "Custom pricing with API access and dedicated support"
+        }
+      ],
       "creator": {
         "@type": "Organization",
-        "name": "ArtLabs",
+        "name": "artlabs",
         "url": "https://artlabs.ai"
-      }
+      },
+      "featureList": [
+        "AI-powered physics estimation (mass, friction, restitution)",
+        "Automatic collision mesh generation via convex decomposition",
+        "OpenUSD output with USDPhysics schemas",
+        "Compatible with NVIDIA Isaac Sim, MuJoCo, Gazebo, Unreal Engine",
+        "Supports .glb, .fbx, .obj input formats",
+        "97% cost reduction vs manual workflows"
+      ]
+    })} />
+
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is Rigyd?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Rigyd is an AI-native platform that converts raw 3D models, images, and text descriptions into physics-enabled, simulation-ready OpenUSD assets. It automatically estimates mass, friction, and restitution, generates collision meshes, and outputs validated OpenUSD files ready for robotics simulators like NVIDIA Isaac Sim, MuJoCo, Gazebo, and Unreal Engine."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What file formats does Rigyd support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Rigyd accepts .glb, .fbx, and .obj 3D file formats as input. The output is physics-enabled OpenUSD with USDPhysics schemas including rigid body, collision, and mass APIs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which robotics simulators are compatible with Rigyd?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Rigyd outputs are compatible with NVIDIA Isaac Sim, MuJoCo, Gazebo (ROS 2), and Unreal Engine. The OpenUSD format ensures interoperability across simulation platforms."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does Rigyd cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Rigyd Starter plan is $29/month (or $19/month billed annually) and includes 10 sim-ready objects per month with priority support. Enterprise plans offer custom pricing with API access and dedicated support."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a SimReady asset?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A SimReady asset is a 3D model enriched with physical properties (mass, friction, collision geometry, center of mass) and packaged as OpenUSD, making it ready for physics-accurate robotics simulation. SimReady assets enable realistic grasping, stacking, and manipulation in simulators."
+          }
+        }
+      ]
+    })} />
+
+    <!-- Structured Data: HowTo -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to create simulation-ready assets with Rigyd",
+      "description": "Convert any 3D model into a physics-enabled OpenUSD asset in three steps.",
+      "totalTime": "PT5M",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Upload",
+          "text": "Drop any 3D file (.glb, .fbx, .obj). Rigyd accepts multiple file formats."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "AI estimates physics",
+          "text": "Rigyd generates collision meshes, identifies materials, and estimates mass, friction, and center of mass using AI."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Download SimReady USD",
+          "text": "Download validated OpenUSD with USDPhysics schemas, ready for NVIDIA Isaac Sim, MuJoCo, Gazebo, and Unreal Engine."
+        }
+      ]
     })} />
   </head>
   <body class="grid-bg min-h-screen relative">
