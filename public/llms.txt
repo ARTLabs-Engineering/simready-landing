@@ -1,0 +1,65 @@
+# Rigyd
+
+> Rigyd is an AI-native platform that converts raw 3D models, images, and text into physics-enabled, simulation-ready OpenUSD assets for robotics training.
+
+Rigyd is built by artlabs (https://artlabs.ai), a member of the NVIDIA Inception Program.
+
+## What Rigyd Does
+
+Rigyd solves the 3D data bottleneck in robotics simulation. Most 3D assets lack the physical properties (mass, friction, collision geometry) that simulators need. Rigyd uses AI to automatically:
+
+- Estimate physics properties: mass, friction, restitution, center of mass
+- Generate collision meshes via convex decomposition
+- Add semantic labels and material identification
+- Output validated OpenUSD with USDPhysics schemas (PhysicsRigidBodyAPI, PhysicsMassAPI, PhysicsCollisionAPI)
+
+## Input Formats
+
+- .glb (glTF Binary)
+- .fbx (Autodesk FBX)
+- .obj (Wavefront OBJ)
+- Images (coming soon)
+- Text descriptions (coming soon)
+
+## Compatible Simulators
+
+- NVIDIA Isaac Sim (via OpenUSD)
+- MuJoCo (Google DeepMind)
+- Gazebo / ROS 2 (Open Robotics)
+- Unreal Engine (Epic Games)
+
+## Pricing
+
+- Starter: $29/month (or $19/month billed annually) — 10 sim-ready objects per month, priority support
+- Enterprise: Custom pricing — API access, customized for your needs, exclusive access to new features
+
+## Key Statistics
+
+- Only ~1,000 SimReady assets exist today in NVIDIA's library; typical warehouses have 50,000+ SKUs
+- 40% better real-world performance when training combines synthetic + real data with physics-accurate assets (Source: NVIDIA GR00T N1 Benchmark, 2025)
+- 97% cost reduction in scene preparation vs manual workflows
+- $370K saved per 1,000-object simulation project
+
+## Three Tracks
+
+1. **3D to SimReady** (Available now): Upload existing 3D models. Rigyd optimizes geometry, adds physics properties, collision meshes, semantic labels, and packages as OpenUSD. Bulk processing via API available for enterprise plans.
+2. **Text/Image to SimReady** (Coming soon): Describe what you need or upload images. AI generates 3D geometry with physics properties.
+3. **Worlds to SimReady** (Coming soon): Describe environments your robots need. AI generates diverse, physically accurate 3D scenes.
+
+## How It Works
+
+1. Upload: Drop any 3D file (.glb, .fbx, .obj)
+2. AI Estimates Physics: Generates collision meshes, identifies materials, estimates mass, friction, center of mass
+3. Download SimReady USD: Validated OpenUSD with USDPhysics schemas ready for deployment
+
+## Company
+
+- Website: https://rigyd.com
+- Parent company: artlabs (https://artlabs.ai)
+- Twitter: https://twitter.com/artlabs_ai
+- LinkedIn: https://linkedin.com/company/artlabs-ai
+- GitHub: https://github.com/ARTLabs-Engineering
+
+## Contact
+
+- Enterprise inquiries: https://cal.com/ugur-yekta/30min
