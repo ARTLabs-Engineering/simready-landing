@@ -1,18 +1,19 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #0A0A0B;
-  --color-bg-card: #18181B;
-  --color-amber: #F59E0B;
-  --color-amber-dim: #B45309;
+  /* Rigyd theme — navy + electric lime */
+  --color-bg: #0a0c18;
+  --color-bg-card: #12152a;
+  --color-amber: #d4e017;
+  --color-amber-dim: #7a801a;
   --color-blue: #3B82F6;
   --color-green: #10B981;
-  --color-text: #FAFAFA;
-  --color-text-secondary: #A1A1AA;
-  --color-border: rgba(255, 255, 255, 0.06);
-  --color-border-hover: rgba(255, 255, 255, 0.12);
+  --color-text: #ebe9e0;
+  --color-text-secondary: #5a6478;
+  --color-border: rgba(235, 233, 224, 0.08);
+  --color-border-hover: rgba(235, 233, 224, 0.14);
 
-  --font-sans: 'Geist', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Space Grotesk', system-ui, -apple-system, sans-serif;
   --font-mono: 'Geist Mono', 'JetBrains Mono', ui-monospace, monospace;
 }
 
@@ -41,8 +42,8 @@ body::before {
 /* Subtle grid background */
 .grid-bg {
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    linear-gradient(rgba(235, 233, 224, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(235, 233, 224, 0.02) 1px, transparent 1px);
   background-size: 64px 64px;
 }
 
@@ -93,7 +94,7 @@ html {
 
 /* Selection color */
 ::selection {
-  background: rgba(245, 158, 11, 0.3);
+  background: rgba(212, 224, 23, 0.3);
   color: var(--color-text);
 }
 
@@ -112,9 +113,9 @@ html {
   background: var(--color-bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: #27272A;
+  background: #2a2e42;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #3F3F46;
+  background: #3a3e52;
 }

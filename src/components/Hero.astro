@@ -11,12 +11,11 @@ import TryNowButton from './TryNowButton.astro';
     <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-bg/80 border-b border-[rgba(255,255,255,0.06)]">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
         <a href="/" class="flex items-center gap-2.5 text-text font-semibold text-sm tracking-tight">
-          <!-- ArtLabs logo mark -->
           <svg class="w-6 h-6" viewBox="0 0 32 32" fill="none">
-            <rect width="32" height="32" rx="8" fill="#F59E0B"/>
-            <path d="M8 24L16 8L24 24H20L16 15L12 24H8Z" fill="#0A0A0B" stroke="#0A0A0B" stroke-width="0.5"/>
+            <rect width="32" height="32" rx="6" fill="#d4e017"/>
+            <path d="M8 24L16 8L24 24H20L16 15L12 24H8Z" fill="#0a0c18" stroke="#0a0c18" stroke-width="0.5"/>
           </svg>
-          <span>SimReady <span class="text-text-secondary font-normal">by artlabs</span></span>
+          <span class="tracking-wide">RIGYD</span>
         </a>
         <div class="flex items-center gap-6">
           <a href="#how-it-works" class="text-sm text-text-secondary hover:text-text transition-colors hidden sm:block">How it works</a>
@@ -94,7 +93,7 @@ import TryNowButton from './TryNowButton.astro';
 
       <!-- Right: 3D Scene -->
       <div class="relative">
-        <div id="scene-container" class="relative w-full aspect-square max-w-[520px] mx-auto rounded-2xl overflow-hidden border border-[rgba(255,255,255,0.06)] bg-[#111113]">
+        <div id="scene-container" class="relative w-full aspect-square max-w-[520px] mx-auto">
           <!-- Three.js canvas mounts here -->
           <canvas id="hero-canvas" class="w-full h-full"></canvas>
 
@@ -154,6 +153,7 @@ import TryNowButton from './TryNowButton.astro';
       alpha: true,
     });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setClearColor(0x000000, 0);
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.2;
 
@@ -178,7 +178,7 @@ import TryNowButton from './TryNowButton.astro';
     fillLight.position.set(-3, 2, -2);
     scene.add(fillLight);
 
-    const rimLight = new THREE.DirectionalLight(0xF59E0B, 0.4);
+    const rimLight = new THREE.DirectionalLight(0xd4e017, 0.4);
     rimLight.position.set(0, 3, -4);
     scene.add(rimLight);
 
@@ -195,13 +195,13 @@ import TryNowButton from './TryNowButton.astro';
     });
 
     const physicsWireMat = new THREE.MeshBasicMaterial({
-      color: 0xF59E0B,
+      color: 0xd4e017,
       wireframe: true,
       transparent: true,
       opacity: 0.35,
     });
 
-    const comMat = new THREE.MeshBasicMaterial({ color: 0xF59E0B });
+    const comMat = new THREE.MeshBasicMaterial({ color: 0xd4e017 });
 
     // State groups
     const wireGroup = new THREE.Group();
@@ -422,18 +422,18 @@ import TryNowButton from './TryNowButton.astro';
 
 <style>
   .state-pill {
-    color: #A1A1AA;
-    border-color: rgba(255, 255, 255, 0.06);
-    background: rgba(10, 10, 11, 0.8);
+    color: #5a6478;
+    border-color: rgba(235, 233, 224, 0.08);
+    background: rgba(10, 12, 24, 0.8);
     backdrop-filter: blur(8px);
   }
   .state-pill:hover {
-    color: #FAFAFA;
-    border-color: rgba(255, 255, 255, 0.12);
+    color: #ebe9e0;
+    border-color: rgba(235, 233, 224, 0.14);
   }
   .state-pill.active {
-    color: #F59E0B;
-    border-color: rgba(245, 158, 11, 0.4);
-    background: rgba(245, 158, 11, 0.08);
+    color: #d4e017;
+    border-color: rgba(212, 224, 23, 0.4);
+    background: rgba(212, 224, 23, 0.08);
   }
 </style>
