@@ -99,14 +99,14 @@ import TryNowButton from './TryNowButton.astro';
 
           <!-- State indicator pills -->
           <div id="state-pills" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 z-10">
-            <button data-state="0" class="state-pill active px-3 py-1 text-xs font-mono rounded-full border transition-all" aria-label="View wireframe mesh">
+            <button data-state="2" class="state-pill active px-3 py-1 text-xs font-mono rounded-full border transition-all" aria-label="View SimReady asset">
+              SimReady
+            </button>
+            <button data-state="0" class="state-pill px-3 py-1 text-xs font-mono rounded-full border transition-all" aria-label="View wireframe mesh">
               Wireframe
             </button>
             <button data-state="1" class="state-pill px-3 py-1 text-xs font-mono rounded-full border transition-all" aria-label="View textured model">
               Textured
-            </button>
-            <button data-state="2" class="state-pill px-3 py-1 text-xs font-mono rounded-full border transition-all" aria-label="View SimReady asset">
-              SimReady
             </button>
           </div>
 
@@ -207,8 +207,8 @@ import TryNowButton from './TryNowButton.astro';
     const wireGroup = new THREE.Group();
     const texGroup = new THREE.Group();
     const simGroup = new THREE.Group();
+    wireGroup.visible = false;
     texGroup.visible = false;
-    simGroup.visible = false;
     modelGroup.add(wireGroup, texGroup, simGroup);
 
     // ─── Load GLB model + collision mesh ────────────────────────
@@ -326,9 +326,7 @@ import TryNowButton from './TryNowButton.astro';
     });
 
     // ─── State management ─────────────────────────────────────
-    let currentState = 0;
-    let userInteracted = false;
-    let autoCycleTimer: ReturnType<typeof setInterval>;
+    let currentState = 2;
 
     function setState(state: number) {
       currentState = state;
@@ -350,28 +348,15 @@ import TryNowButton from './TryNowButton.astro';
       });
     }
 
+    // Initialize active pill to SimReady
+    setState(2);
+
     statePills.forEach((pill) => {
       pill.addEventListener('click', () => {
         const state = parseInt(pill.getAttribute('data-state') || '0');
         setState(state);
-        userInteracted = true;
-        clearInterval(autoCycleTimer);
-        autoCycleTimer = setInterval(() => {
-          if (!userInteracted) {
-            setState((currentState + 1) % 3);
-          }
-          userInteracted = false;
-        }, 3000);
       });
     });
-
-    // Auto-cycle states
-    autoCycleTimer = setInterval(() => {
-      if (!userInteracted) {
-        setState((currentState + 1) % 3);
-      }
-      userInteracted = false;
-    }, 3000);
 
     // ─── Mouse interaction ────────────────────────────────────
     let isDragging = false;
@@ -382,7 +367,6 @@ import TryNowButton from './TryNowButton.astro';
     container.addEventListener('pointerdown', (e) => {
       isDragging = true;
       previousMouseX = e.clientX;
-      userInteracted = true;
     });
 
     window.addEventListener('pointermove', (e) => {
