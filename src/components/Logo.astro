@@ -1,0 +1,68 @@
+---
+/**
+ * Animated RIGYD logo — crosshair reticle with corner brackets that fly out on hover.
+ * Pure CSS animation, no JS needed.
+ */
+---
+
+<a href="/" class="rigyd-logo group relative flex items-center gap-[10px] select-none" aria-label="RIGYD home">
+  <!-- Crosshair icon wrapper — brackets are positioned relative to this -->
+  <div class="relative shrink-0 w-[22px] h-[22px]">
+    <!-- Crosshair SVG — scales up + shifts right on hover -->
+    <svg width="22" height="22" viewBox="0 0 20 20" fill="none"
+      class="transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-[1.15] group-hover:translate-x-[5px]">
+      <line x1="10" y1="4" x2="10" y2="8" stroke="#d4e017" stroke-width="0.8" />
+      <line x1="10" y1="12" x2="10" y2="16" stroke="#d4e017" stroke-width="0.8" />
+      <line x1="4" y1="10" x2="8" y2="10" stroke="#d4e017" stroke-width="0.8" />
+      <line x1="12" y1="10" x2="16" y2="10" stroke="#d4e017" stroke-width="0.8" />
+      <circle cx="10" cy="10" r="1.8" fill="#d4e017" />
+    </svg>
+
+    <!-- Corner brackets -->
+    <!-- Top-left — stays -->
+    <div class="bracket bracket-tl"></div>
+    <!-- Bottom-left — stays -->
+    <div class="bracket bracket-bl"></div>
+    <!-- Top-right — flies right on hover -->
+    <div class="bracket bracket-tr"></div>
+    <!-- Bottom-right — flies right on hover -->
+    <div class="bracket bracket-br"></div>
+  </div>
+
+  <span class="text-[15px] font-bold text-[#ebe9e0]" style="font-family: 'Quantico', monospace; letter-spacing: 0.16em;">
+    RIGYD
+  </span>
+</a>
+
+<style>
+  .bracket {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    pointer-events: none;
+    border-color: rgba(90, 100, 120, 0.4);
+    transition: transform 500ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .bracket-tl { top: -4px; left: -4px; border-width: 1.5px 0 0 1.5px; }
+  .bracket-bl { bottom: -4px; left: -4px; border-width: 0 0 1.5px 1.5px; }
+  .bracket-tr { top: -4px; right: -4px; border-width: 1.5px 1.5px 0 0; }
+  .bracket-br { bottom: -4px; right: -4px; border-width: 0 1.5px 1.5px 0; }
+
+  /* On hover, right brackets fly to the end of the wordmark */
+  .rigyd-logo:hover .bracket-tr,
+  .rigyd-logo:hover .bracket-br {
+    transform: translateX(var(--fly-dist, 100px));
+  }
+</style>
+
+<script>
+  // Measure the distance right brackets need to fly
+  function measureLogos() {
+    document.querySelectorAll<HTMLElement>('.rigyd-logo').forEach((logo) => {
+      const dist = logo.offsetWidth - 22 + 4; // container width - icon width + padding
+      logo.style.setProperty('--fly-dist', `${dist}px`);
+    });
+  }
+  measureLogos();
+  window.addEventListener('resize', measureLogos);
+</script>

@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Quantico";
+  src: url("/fonts/Quantico-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   /* Rigyd theme — navy + electric lime */
   --color-bg: #0a0c18;
