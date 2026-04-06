@@ -134,7 +134,7 @@ import TryNowButton from './TryNowButton.astro';
 <script>
   import * as THREE from 'three';
   import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-  import { ConvexGeometry } from 'three/addons/geometries/ConvexGeometry.js';
+  import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 
   const canvas = document.getElementById('hero-canvas') as HTMLCanvasElement;
   const container = document.getElementById('scene-container') as HTMLElement;
@@ -213,7 +213,10 @@ import TryNowButton from './TryNowButton.astro';
 
     // ─── Load GLB model ───────────────────────────────────────
     // Replace /model.glb in public/ with your own .glb file.
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath('/draco/');
     const loader = new GLTFLoader();
+    loader.setDRACOLoader(dracoLoader);
     loader.load(
       '/model.glb',
       (gltf) => {
