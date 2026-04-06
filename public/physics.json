@@ -1,0 +1,18 @@
+{
+  "mass_kg": 1.1961,
+  "center_of_mass": [
+    0.0015770752079999999,
+    0.00015869939199999997,
+    0.187906279323
+  ],
+  "diagonal_inertia": [
+    0.03105277,
+    0.03431353,
+    0.00808352
+  ],
+  "static_friction": 0.55,
+  "dynamic_friction": 0.45,
+  "restitution": 0.38,
+  "density_kg_m3": 631.52,
+  "num_collision_meshes": 77
+}
