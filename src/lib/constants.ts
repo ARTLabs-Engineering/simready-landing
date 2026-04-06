@@ -75,7 +75,7 @@ export const USD_CODE = `<span class="code-comment"># SimReady Output (OpenUSD)<
 export const TRACKS = [
   {
     title: '3D \u2192 SimReady',
-    description: 'Already have 3D models? We optimize the geometry and add physics properties, collision meshes, semantic labels, and package as OpenUSD. Bulk processing via API is also available for enterprise plan.',
+    description: 'Already have 3D models? We optimize the geometry and add physics properties, collision meshes, semantic labels, and package as OpenUSD. No pre-processing needed. Bulk processing via API is also available for enterprise plan.',
     active: true,
     badge: null,
   },
