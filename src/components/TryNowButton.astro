@@ -21,6 +21,7 @@ const sizeClasses = size === 'large'
     className,
   ]}
   aria-label="Try Rigyd now"
+  onclick="gtag('event', 'cta_click', {button_text: 'try_now', button_location: this.closest('section')?.id || 'hero'});"
 >
   <span class="relative z-10 flex items-center gap-2">
     Try now
