@@ -1,0 +1,110 @@
+---
+const faqs = [
+  {
+    question: 'What is a sim-ready asset?',
+    answer:
+      'A sim-ready (SimReady) asset is a 3D model enriched with the metadata and physical properties needed for accurate simulation. This includes rigid-body physics (mass, friction, restitution), collision meshes, semantic labels, and material specifications — all built on OpenUSD. Unlike a regular 3D model that only contains geometry and textures, a sim-ready asset can be dropped directly into simulators like NVIDIA Isaac Sim, MuJoCo, or Gazebo and behave realistically. Rigyd automates this entire enrichment process using AI.',
+  },
+  {
+    question: 'What file formats does Rigyd accept?',
+    answer:
+      'Rigyd currently accepts .glb (glTF Binary), .fbx (Autodesk FBX), and .obj (Wavefront OBJ) files. No pre-processing or format conversion is needed before upload. Generation from 2D images and text descriptions is coming soon.',
+  },
+  {
+    question: 'Do I need to pre-process my 3D models before uploading?',
+    answer:
+      'No. Rigyd handles everything automatically — file size optimization, mesh geometry cleanup, physics property estimation, collision mesh generation, and semantic labeling. Upload your raw 3D files and get simulation-ready OpenUSD output in minutes.',
+  },
+  {
+    question: 'How does scaling sim-ready asset generation improve sim-to-real transfer?',
+    answer:
+      'The sim-to-real gap is primarily a data quality problem. When simulated objects have inaccurate physics — wrong mass, unrealistic friction, or oversimplified collision geometry — policies trained in simulation fail on real hardware. Rigyd generates thousands of physics-accurate assets with calibrated mass (within 15–20% of measured values) and friction (within ±0.1 coefficient), giving domain randomization a realistic baseline to work from. More diverse, physically accurate training data leads to 40% better real-world performance.',
+  },
+  {
+    question: 'What if we need thousands of assets?',
+    answer:
+      'Rigyd\'s Enterprise plan includes API access for batch processing, so you can convert entire 3D catalogs programmatically. <a href="https://cal.com/ugur-yekta/30min" target="_blank" rel="noopener noreferrer" class="text-amber hover:underline">Talk with our CEO</a> to discuss your volume needs and get a custom plan.',
+  },
+];
+---
+
+<section id="faq" class="relative py-24 px-6">
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center mb-14 reveal">
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-text mb-4">
+        Frequently asked questions
+      </h2>
+      <p class="text-text-secondary">Everything you need to know about Rigyd and sim-ready assets.</p>
+    </div>
+
+    <div class="space-y-4">
+      {faqs.map((faq, i) => (
+        <div class={`reveal reveal-delay-${Math.min(i, 3)} faq-item rounded-2xl border border-[rgba(255,255,255,0.06)] bg-bg-card overflow-hidden`}>
+          <button
+            class="faq-trigger w-full flex items-center justify-between gap-4 p-6 text-left cursor-pointer"
+            aria-expanded="false"
+          >
+            <h3 class="text-base font-semibold text-text pr-4">{faq.question}</h3>
+            <svg
+              class="faq-icon w-5 h-5 shrink-0 text-text-secondary transition-transform duration-300"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12M6 12h12" />
+            </svg>
+          </button>
+          <div class="faq-content" style="max-height: 0; overflow: hidden; transition: max-height 0.4s ease;">
+            <p class="px-6 pb-6 text-sm text-text-secondary leading-relaxed" set:html={faq.answer} />
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.faq-trigger').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item') as HTMLElement;
+      const content = item.querySelector('.faq-content') as HTMLElement;
+      const icon = btn.querySelector('.faq-icon') as HTMLElement;
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+
+      // Close all others
+      document.querySelectorAll('.faq-item').forEach((other) => {
+        if (other !== item) {
+          const otherBtn = other.querySelector('.faq-trigger') as HTMLElement;
+          const otherContent = other.querySelector('.faq-content') as HTMLElement;
+          const otherIcon = other.querySelector('.faq-icon') as HTMLElement;
+          otherBtn?.setAttribute('aria-expanded', 'false');
+          if (otherContent) otherContent.style.maxHeight = '0';
+          otherIcon?.classList.remove('rotate-45');
+        }
+      });
+
+      // Toggle current
+      btn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+      if (isOpen) {
+        content.style.maxHeight = '0';
+        icon.classList.remove('rotate-45');
+      } else {
+        content.style.maxHeight = content.scrollHeight + 'px';
+        icon.classList.add('rotate-45');
+      }
+    });
+  });
+</script>
+
+<style>
+  .faq-trigger:hover {
+    background: rgba(255, 255, 255, 0.02);
+  }
+  .faq-icon {
+    transition: transform 0.3s ease;
+  }
+  .rotate-45 {
+    transform: rotate(45deg);
+  }
+</style>

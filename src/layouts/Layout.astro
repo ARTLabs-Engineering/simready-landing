@@ -143,42 +143,42 @@ const { title = SITE.title, description = SITE.description } = Astro.props;
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "What is Rigyd?",
+          "name": "What is a sim-ready asset?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Rigyd is an AI-native platform that converts raw 3D models, images, and text descriptions into physics-enabled, simulation-ready OpenUSD assets. It automatically estimates mass, friction, and restitution, generates collision meshes, and outputs validated OpenUSD files ready for robotics simulators like NVIDIA Isaac Sim, MuJoCo, Gazebo, and Unreal Engine."
+            "text": "A sim-ready (SimReady) asset is a 3D model enriched with the metadata and physical properties needed for accurate simulation. This includes rigid-body physics (mass, friction, restitution), collision meshes, semantic labels, and material specifications — all built on OpenUSD. Unlike a regular 3D model that only contains geometry and textures, a sim-ready asset can be dropped directly into simulators like NVIDIA Isaac Sim, MuJoCo, or Gazebo and behave realistically. Rigyd automates this entire enrichment process using AI."
           }
         },
         {
           "@type": "Question",
-          "name": "What file formats does Rigyd support?",
+          "name": "What file formats does Rigyd accept?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Rigyd accepts .glb, .fbx, and .obj 3D file formats as input. The output is physics-enabled OpenUSD with USDPhysics schemas including rigid body, collision, and mass APIs."
+            "text": "Rigyd currently accepts .glb (glTF Binary), .fbx (Autodesk FBX), and .obj (Wavefront OBJ) files. No pre-processing or format conversion is needed before upload. Generation from 2D images and text descriptions is coming soon."
           }
         },
         {
           "@type": "Question",
-          "name": "Which robotics simulators are compatible with Rigyd?",
+          "name": "Do I need to pre-process my 3D models before uploading?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Rigyd outputs are compatible with NVIDIA Isaac Sim, MuJoCo, Gazebo (ROS 2), and Unreal Engine. The OpenUSD format ensures interoperability across simulation platforms."
+            "text": "No. Rigyd handles everything automatically — file size optimization, mesh geometry cleanup, physics property estimation, collision mesh generation, and semantic labeling. Upload your raw 3D files and get simulation-ready OpenUSD output in minutes."
           }
         },
         {
           "@type": "Question",
-          "name": "How much does Rigyd cost?",
+          "name": "How does scaling sim-ready asset generation improve sim-to-real transfer?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Rigyd Starter plan is $29/month (or $19/month billed annually) and includes 30 sim-ready objects per month with priority support. Enterprise plans offer custom pricing with API access and dedicated support."
+            "text": "The sim-to-real gap is primarily a data quality problem. When simulated objects have inaccurate physics — wrong mass, unrealistic friction, or oversimplified collision geometry — policies trained in simulation fail on real hardware. Rigyd generates thousands of physics-accurate assets with calibrated mass (within 15-20% of measured values) and friction (within plus or minus 0.1 coefficient), giving domain randomization a realistic baseline to work from. More diverse, physically accurate training data leads to 40% better real-world performance."
           }
         },
         {
           "@type": "Question",
-          "name": "What is a SimReady asset?",
+          "name": "What if we need thousands of assets?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A SimReady asset is a 3D model enriched with physical properties (mass, friction, collision geometry, center of mass) and packaged as OpenUSD, making it ready for physics-accurate robotics simulation. SimReady assets enable realistic grasping, stacking, and manipulation in simulators."
+            "text": "Rigyd's Enterprise plan includes API access for batch processing, so you can convert entire 3D catalogs programmatically. Contact us at https://cal.com/ugur-yekta/30min to discuss your volume needs and get a custom plan."
           }
         }
       ]
