@@ -1,10 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="7" fill="#0c0e1a"/>
-  <!-- Crosshair lines -->
-  <rect x="14.5" y="6" width="3" height="8" rx="0.5" fill="#d4e017"/>
-  <rect x="14.5" y="18" width="3" height="8" rx="0.5" fill="#d4e017"/>
-  <rect x="6" y="14.5" width="8" height="3" rx="0.5" fill="#d4e017"/>
-  <rect x="18" y="14.5" width="8" height="3" rx="0.5" fill="#d4e017"/>
+  <rect width="32" height="32" rx="6" fill="#0a0c18"/>
+  <!-- Corner brackets -->
+  <path d="M5 11V5H11" stroke="#5a6478" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.5"/>
+  <path d="M21 5H27V11" stroke="#5a6478" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.5"/>
+  <path d="M27 21V27H21" stroke="#5a6478" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.5"/>
+  <path d="M11 27H5V21" stroke="#5a6478" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.5"/>
+  <!-- Crosshair -->
+  <line x1="16" y1="9" x2="16" y2="13" stroke="#d4e017" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="16" y1="19" x2="16" y2="23" stroke="#d4e017" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="9" y1="16" x2="13" y2="16" stroke="#d4e017" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="19" y1="16" x2="23" y2="16" stroke="#d4e017" stroke-width="1.2" stroke-linecap="round"/>
   <!-- Center dot -->
-  <circle cx="16" cy="16" r="4" fill="#d4e017"/>
+  <circle cx="16" cy="16" r="2.2" fill="#d4e017"/>
 </svg>
