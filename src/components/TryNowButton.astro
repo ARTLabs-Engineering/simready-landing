@@ -1,10 +1,15 @@
 ---
 interface Props {
   size?: 'default' | 'large';
+  label?: string;
   class?: string;
 }
 
-const { size = 'default', class: className = '' } = Astro.props;
+const {
+  size = 'default',
+  label = 'Try now',
+  class: className = '',
+} = Astro.props;
 const sizeClasses = size === 'large'
   ? 'px-8 py-3.5 text-base'
   : 'px-6 py-2.5 text-sm';
@@ -20,13 +25,13 @@ const sizeClasses = size === 'large'
     sizeClasses,
     className,
   ]}
-  aria-label="Try Rigyd now"
+  aria-label={`${label} — Rigyd gives new users 3 free credits, one-time, no credit card required`}
   target="_blank"
   rel="noopener noreferrer"
   onclick="gtag('event', 'cta_click', {button_text: 'try_now', button_location: this.closest('section')?.id || 'hero', transport_type: 'beacon'});"
 >
   <span class="relative z-10 flex items-center gap-2">
-    Try now
+    {label}
     <svg class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
       <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
     </svg>

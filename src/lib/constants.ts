@@ -1,5 +1,5 @@
 export const SITE = {
-  title: 'Rigyd — Turn 3D Models into SimReady Assets for Robotics Simulation',
+  title: '3D Infrastructure for Creating SimReady Assets for Robotics Simulation',
   description: 'Rigyd converts raw 3D models, images, and text into physics-enabled OpenUSD assets for NVIDIA Isaac Sim, MuJoCo, Gazebo, and Unreal Engine. 97% cost reduction vs manual workflows.',
   url: 'https://rigyd.com',
 };
@@ -82,8 +82,8 @@ export const TRACKS = [
   {
     title: 'Text/Image \u2192 SimReady',
     description: 'Describe what you need or upload images. Our AI generates the 3D geometry with required topology, texture AND adds physics properties. Perfect for digitizing product catalogs for warehouse robotics.',
-    active: false,
-    badge: 'Coming soon',
+    active: true,
+    badge: null,
   },
   {
     title: 'Worlds \u2192 SimReady',
