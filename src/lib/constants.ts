@@ -1,5 +1,5 @@
 export const SITE = {
-  title: 'Rigyd — 3D Infrastructure for Creating SimReady Assets for Robotics Simulation',
+  title: 'Rigyd — 3D Infrastructure to Create SimReady Assets for Robotics Simulation',
   description: 'Rigyd converts raw 3D models, images, and text into physics-enabled OpenUSD assets for NVIDIA Isaac Sim, MuJoCo, Gazebo, and Unreal Engine. 97% cost reduction vs manual workflows.',
   url: 'https://rigyd.com',
 };
