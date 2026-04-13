@@ -114,7 +114,7 @@ const { title = SITE.title, description = SITE.description } = Astro.props;
           "price": "29",
           "priceCurrency": "USD",
           "billingIncrement": "monthly",
-          "description": "30 sim-ready objects per month with priority support"
+          "description": "30 SimReady objects per month with priority support"
         },
         {
           "@type": "Offer",
@@ -146,10 +146,10 @@ const { title = SITE.title, description = SITE.description } = Astro.props;
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "What is a sim-ready asset?",
+          "name": "What is a SimReady asset?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A sim-ready (SimReady) asset is a 3D model enriched with the metadata and physical properties needed for accurate simulation. This includes rigid-body physics (mass, friction, restitution), collision meshes, semantic labels, and material specifications — all built on OpenUSD. Unlike a regular 3D model that only contains geometry and textures, a sim-ready asset can be dropped directly into simulators like NVIDIA Isaac Sim, MuJoCo, or Gazebo and behave realistically. Rigyd automates this entire enrichment process using AI."
+            "text": "A SimReady (SimReady) asset is a 3D model enriched with the metadata and physical properties needed for accurate simulation. This includes rigid-body physics (mass, friction, restitution), collision meshes, semantic labels, and material specifications — all built on OpenUSD. Unlike a regular 3D model that only contains geometry and textures, a SimReady asset can be dropped directly into simulators like NVIDIA Isaac Sim, MuJoCo, or Gazebo and behave realistically. Rigyd automates this entire enrichment process using AI."
           }
         },
         {
@@ -170,7 +170,7 @@ const { title = SITE.title, description = SITE.description } = Astro.props;
         },
         {
           "@type": "Question",
-          "name": "How does scaling sim-ready asset generation improve sim-to-real transfer?",
+          "name": "How does scaling SimReady asset generation improve sim-to-real transfer?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "The sim-to-real gap is primarily a data quality problem. When simulated objects have inaccurate physics — wrong mass, unrealistic friction, or oversimplified collision geometry — policies trained in simulation fail on real hardware. Rigyd generates thousands of physics-accurate assets with calibrated mass (within 15-20% of measured values) and friction (within plus or minus 0.1 coefficient), giving domain randomization a realistic baseline to work from. More diverse, physically accurate training data leads to 40% better real-world performance."
@@ -199,7 +199,7 @@ const { title = SITE.title, description = SITE.description } = Astro.props;
           "@type": "HowToStep",
           "position": 1,
           "name": "Upload",
-          "text": "Drop any 3D file (.glb, .fbx, .obj). Rigyd accepts multiple file formats."
+          "text": "Drop images / 3D models or describe what you need."
         },
         {
           "@type": "HowToStep",

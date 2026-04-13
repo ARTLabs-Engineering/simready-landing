@@ -30,7 +30,7 @@ Rigyd solves the 3D data bottleneck in robotics simulation. Most 3D assets lack 
 
 ## Pricing
 
-- Starter: $29/month (or $19/month billed annually) — 30 sim-ready objects per month, priority support
+- Starter: $29/month (or $19/month billed annually) — 30 SimReady objects per month, priority support
 - Enterprise: Custom pricing — API access, customized for your needs, exclusive access to new features
 
 ## Key Statistics

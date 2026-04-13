@@ -1,9 +1,9 @@
 ---
 const faqs = [
   {
-    question: 'What is a sim-ready asset?',
+    question: 'What is a SimReady asset?',
     answer:
-      'A sim-ready (SimReady) asset is a 3D model enriched with the metadata and physical properties needed for accurate simulation. This includes rigid-body physics (mass, friction, restitution), collision meshes, semantic labels, and material specifications — all built on OpenUSD. Unlike a regular 3D model that only contains geometry and textures, a sim-ready asset can be dropped directly into simulators like NVIDIA Isaac Sim, MuJoCo, or Gazebo and behave realistically. Rigyd automates this entire enrichment process using AI.',
+      'A SimReady (SimReady) asset is a 3D model enriched with the metadata and physical properties needed for accurate simulation. This includes rigid-body physics (mass, friction, restitution), collision meshes, semantic labels, and material specifications — all built on OpenUSD. Unlike a regular 3D model that only contains geometry and textures, a SimReady asset can be dropped directly into simulators like NVIDIA Isaac Sim, MuJoCo, or Gazebo and behave realistically. Rigyd automates this entire enrichment process using AI.',
   },
   {
     question: 'What file formats does Rigyd accept?',
@@ -16,7 +16,7 @@ const faqs = [
       'No. Rigyd handles everything automatically — file size optimization, mesh geometry cleanup, physics property estimation, collision mesh generation, and semantic labeling. Upload your raw 3D files and get simulation-ready OpenUSD output in minutes.',
   },
   {
-    question: 'How does scaling sim-ready asset generation improve sim-to-real transfer?',
+    question: 'How does scaling SimReady asset generation improve sim-to-real transfer?',
     answer:
       'The sim-to-real gap is primarily a data quality problem. When simulated objects have inaccurate physics — wrong mass, unrealistic friction, or oversimplified collision geometry — policies trained in simulation fail on real hardware. Rigyd generates thousands of physics-accurate assets with calibrated mass (within 15–20% of measured values) and friction (within ±0.1 coefficient), giving domain randomization a realistic baseline to work from. More diverse, physically accurate training data leads to 40% better real-world performance.',
   },
@@ -34,7 +34,7 @@ const faqs = [
       <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-text mb-4">
         Frequently asked questions
       </h2>
-      <p class="text-text-secondary">Everything you need to know about Rigyd and sim-ready assets.</p>
+      <p class="text-text-secondary">Everything you need to know about Rigyd and SimReady assets.</p>
     </div>
 
     <div class="space-y-4">

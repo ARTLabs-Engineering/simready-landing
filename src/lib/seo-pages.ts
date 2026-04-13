@@ -22,7 +22,7 @@ export const ENGINE_PAGES: Record<string, SeoPage> = {
     title: 'SimReady Assets for NVIDIA Isaac Sim',
     metaTitle: 'SimReady Assets for NVIDIA Isaac Sim | Rigyd',
     metaDescription:
-      'Generate physics-enabled OpenUSD assets optimized for NVIDIA Isaac Sim. Automatic mass, friction, and collision mesh estimation. Upload .glb, .fbx, .obj and get sim-ready USD in minutes.',
+      'Generate physics-enabled OpenUSD assets optimized for NVIDIA Isaac Sim. Automatic mass, friction, and collision mesh estimation. Upload .glb, .fbx, .obj and get SimReady USD in minutes.',
     heroHeadline: 'SimReady assets for<br /><span class="text-amber">NVIDIA Isaac Sim</span>',
     heroSub:
       'Upload any 3D model and get physics-enabled OpenUSD assets validated for Isaac Sim. Rigyd estimates mass, friction, restitution, and generates collision meshes automatically.',
@@ -62,7 +62,7 @@ export const ENGINE_PAGES: Record<string, SeoPage> = {
     ],
     stats: [
       { value: '97%', label: 'cost reduction vs manual asset preparation' },
-      { value: '~5 min', label: 'per asset, from upload to sim-ready USD' },
+      { value: '~5 min', label: 'per asset, from upload to SimReady USD' },
       { value: '1,000+', label: 'assets generated for Isaac Sim workflows' },
     ],
     ctaHeadline: 'Start building simulations in Isaac Sim faster',
@@ -278,7 +278,7 @@ export const ENGINE_PAGES: Record<string, SeoPage> = {
     ],
     stats: [
       { value: '97%', label: 'cost reduction in digital twin asset creation' },
-      { value: '~5 min', label: 'per asset, from upload to sim-ready' },
+      { value: '~5 min', label: 'per asset, from upload to SimReady' },
       { value: '40%', label: 'better sim-to-real transfer with accurate physics' },
     ],
     ctaHeadline: 'Build physics-accurate Unreal Engine simulations',
@@ -340,7 +340,7 @@ export const VERTICAL_PAGES: Record<string, SeoPage> = {
       { value: '97%', label: 'cost reduction vs manual physics annotation' },
     ],
     ctaHeadline: 'Build warehouse simulations at catalog scale',
-    ctaSub: 'Convert your product 3D models into sim-ready assets with one upload.',
+    ctaSub: 'Convert your product 3D models into SimReady assets with one upload.',
     schemaType: 'Article',
     canonicalPath: '/verticals/warehouse-robots/',
   },
@@ -391,10 +391,10 @@ export const VERTICAL_PAGES: Record<string, SeoPage> = {
     stats: [
       { value: '40%', label: 'better real-world performance with physics-accurate training' },
       { value: '97%', label: 'faster than manual physics annotation' },
-      { value: '~5 min', label: 'per object from upload to sim-ready' },
+      { value: '~5 min', label: 'per object from upload to SimReady' },
     ],
     ctaHeadline: 'Train better manipulation policies',
-    ctaSub: 'Upload objects your robot needs to handle and get sim-ready assets in minutes.',
+    ctaSub: 'Upload objects your robot needs to handle and get SimReady assets in minutes.',
     schemaType: 'Article',
     canonicalPath: '/verticals/robotic-arm/',
   },
