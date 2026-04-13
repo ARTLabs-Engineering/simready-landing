@@ -26,8 +26,6 @@ const sizeClasses = size === 'large'
     className,
   ]}
   aria-label={`${label} — Rigyd gives new users 3 free credits, one-time, no credit card required`}
-  target="_blank"
-  rel="noopener noreferrer"
   onclick="gtag('event', 'cta_click', {button_text: 'try_now', button_location: this.closest('section')?.id || 'hero', transport_type: 'beacon'});"
 >
   <span class="relative z-10 flex items-center gap-2">
