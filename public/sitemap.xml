@@ -2,70 +2,70 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://rigyd.com/</loc>
-    <lastmod>2026-04-07</lastmod>
+    <lastmod>2026-04-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <!-- Simulation Engines -->
   <url>
-    <loc>https://rigyd.com/for/isaac-sim</loc>
-    <lastmod>2026-04-07</lastmod>
+    <loc>https://rigyd.com/for/isaac-sim/</loc>
+    <lastmod>2026-04-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://rigyd.com/for/omniverse</loc>
-    <lastmod>2026-04-07</lastmod>
+    <loc>https://rigyd.com/for/omniverse/</loc>
+    <lastmod>2026-04-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://rigyd.com/for/gazebo</loc>
-    <lastmod>2026-04-07</lastmod>
+    <loc>https://rigyd.com/for/gazebo/</loc>
+    <lastmod>2026-04-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://rigyd.com/for/mujoco</loc>
-    <lastmod>2026-04-07</lastmod>
+    <loc>https://rigyd.com/for/mujoco/</loc>
+    <lastmod>2026-04-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://rigyd.com/for/unreal</loc>
-    <lastmod>2026-04-07</lastmod>
+    <loc>https://rigyd.com/for/unreal/</loc>
+    <lastmod>2026-04-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <!-- Robotics Verticals -->
   <url>
-    <loc>https://rigyd.com/verticals/warehouse-robots</loc>
-    <lastmod>2026-04-07</lastmod>
+    <loc>https://rigyd.com/verticals/warehouse-robots/</loc>
+    <lastmod>2026-04-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://rigyd.com/verticals/robotic-arm</loc>
-    <lastmod>2026-04-07</lastmod>
+    <loc>https://rigyd.com/verticals/robotic-arm/</loc>
+    <lastmod>2026-04-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://rigyd.com/verticals/humanoid-robots</loc>
-    <lastmod>2026-04-07</lastmod>
+    <loc>https://rigyd.com/verticals/humanoid-robots/</loc>
+    <lastmod>2026-04-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <!-- Use Cases -->
   <url>
-    <loc>https://rigyd.com/use-cases/sim-to-real</loc>
-    <lastmod>2026-04-07</lastmod>
+    <loc>https://rigyd.com/use-cases/sim-to-real/</loc>
+    <lastmod>2026-04-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://rigyd.com/use-cases/domain-randomization</loc>
-    <lastmod>2026-04-07</lastmod>
+    <loc>https://rigyd.com/use-cases/domain-randomization/</loc>
+    <lastmod>2026-04-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

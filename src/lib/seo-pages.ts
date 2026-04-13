@@ -68,7 +68,7 @@ export const ENGINE_PAGES: Record<string, SeoPage> = {
     ctaHeadline: 'Start building simulations in Isaac Sim faster',
     ctaSub: 'Upload your first 3D model and get a physics-enabled OpenUSD asset in minutes.',
     schemaType: 'SoftwareApplication',
-    canonicalPath: '/for/isaac-sim',
+    canonicalPath: '/for/isaac-sim/',
   },
 
   omniverse: {
@@ -122,7 +122,7 @@ export const ENGINE_PAGES: Record<string, SeoPage> = {
     ctaHeadline: 'Build your Omniverse asset library faster',
     ctaSub: 'Convert any 3D file to SimReady-compliant OpenUSD in minutes.',
     schemaType: 'SoftwareApplication',
-    canonicalPath: '/for/omniverse',
+    canonicalPath: '/for/omniverse/',
   },
 
   gazebo: {
@@ -176,7 +176,7 @@ export const ENGINE_PAGES: Record<string, SeoPage> = {
     ctaHeadline: 'Accelerate your Gazebo simulations',
     ctaSub: 'Upload a 3D model and get physics-accurate assets for ROS 2 in minutes.',
     schemaType: 'SoftwareApplication',
-    canonicalPath: '/for/gazebo',
+    canonicalPath: '/for/gazebo/',
   },
 
   mujoco: {
@@ -230,7 +230,7 @@ export const ENGINE_PAGES: Record<string, SeoPage> = {
     ctaHeadline: 'Build better MuJoCo training environments',
     ctaSub: 'Upload a 3D model and get physics-accurate assets for MuJoCo in minutes.',
     schemaType: 'SoftwareApplication',
-    canonicalPath: '/for/mujoco',
+    canonicalPath: '/for/mujoco/',
   },
 
   unreal: {
@@ -284,7 +284,7 @@ export const ENGINE_PAGES: Record<string, SeoPage> = {
     ctaHeadline: 'Build physics-accurate Unreal Engine simulations',
     ctaSub: 'Upload 3D models and get simulation-ready assets for UE5 in minutes.',
     schemaType: 'SoftwareApplication',
-    canonicalPath: '/for/unreal',
+    canonicalPath: '/for/unreal/',
   },
 };
 
@@ -342,7 +342,7 @@ export const VERTICAL_PAGES: Record<string, SeoPage> = {
     ctaHeadline: 'Build warehouse simulations at catalog scale',
     ctaSub: 'Convert your product 3D models into sim-ready assets with one upload.',
     schemaType: 'Article',
-    canonicalPath: '/verticals/warehouse-robots',
+    canonicalPath: '/verticals/warehouse-robots/',
   },
 
   'robotic-arm': {
@@ -396,7 +396,7 @@ export const VERTICAL_PAGES: Record<string, SeoPage> = {
     ctaHeadline: 'Train better manipulation policies',
     ctaSub: 'Upload objects your robot needs to handle and get sim-ready assets in minutes.',
     schemaType: 'Article',
-    canonicalPath: '/verticals/robotic-arm',
+    canonicalPath: '/verticals/robotic-arm/',
   },
 
   'humanoid-robots': {
@@ -450,7 +450,7 @@ export const VERTICAL_PAGES: Record<string, SeoPage> = {
     ctaHeadline: 'Build environments your humanoid can learn from',
     ctaSub: 'Upload household 3D models and get physics-accurate training assets in minutes.',
     schemaType: 'Article',
-    canonicalPath: '/verticals/humanoid-robots',
+    canonicalPath: '/verticals/humanoid-robots/',
   },
 };
 
@@ -508,7 +508,7 @@ export const USE_CASE_PAGES: Record<string, SeoPage> = {
     ctaHeadline: 'Close the sim-to-real gap with better data',
     ctaSub: 'Start with physics-accurate assets and let domain randomization do the rest.',
     schemaType: 'Article',
-    canonicalPath: '/use-cases/sim-to-real',
+    canonicalPath: '/use-cases/sim-to-real/',
   },
 
   'domain-randomization': {
@@ -562,7 +562,7 @@ export const USE_CASE_PAGES: Record<string, SeoPage> = {
     ctaHeadline: 'Build diverse training datasets at scale',
     ctaSub: 'Upload your object library and get physics-accurate assets for domain randomization.',
     schemaType: 'Article',
-    canonicalPath: '/use-cases/domain-randomization',
+    canonicalPath: '/use-cases/domain-randomization/',
   },
 };
 
