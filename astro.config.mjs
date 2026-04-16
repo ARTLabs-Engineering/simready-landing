@@ -5,7 +5,10 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   site: 'https://rigyd.com',
   output: 'static',
-  trailingSlash: 'always',
+  trailingSlash: 'never',
+  build: {
+    format: 'file',
+  },
   vite: {
     plugins: [tailwindcss()],
   },
